@@ -5,11 +5,11 @@ class EmployeeController {
 
   async employee(req, res) {
     let data = []
-    const allOrder = await Order_M.find({}).populate('MaKH').exec()
-    for (var i = 0; i < allOrder.length; i++) {
-      let allDetail = await Detail_M.find({ MaHD: allOrder[i]._id }).populate('MaSP')
+    const all = await Order_M.find({}).populate('MaKH').exec()
+    for (var i = 0; i < all.length; i++) {
+      let allDetail = await Detail_M.find({ MaHD: all[i]._id }).populate('MaSP')
       data.push({
-        DonHang: allOrder[i],
+        DonHang: all[i],
         DeTail: allDetail
       })
     }
