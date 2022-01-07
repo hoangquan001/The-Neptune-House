@@ -3,7 +3,7 @@ const Products_M = require("../models/SanPham");
 const Staff_M = require("../models/NhanVien");
 const Detail_M = require("../models/CTHoaDon");
 class AdminController {
-
+  //Admin
   //Quan lý nhân viên
   //[GET]
   async staff(req, res) {
