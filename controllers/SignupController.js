@@ -5,7 +5,7 @@ var ejs = require('ejs');
 class SignupController {
     //[GET]
     index(req, res) {
-
+        //121212/
         res.locals.message = req.session.message;
         req.session.message = null;
         res.render('Signup', { title: 'Đăng kí' })
@@ -35,6 +35,7 @@ class SignupController {
                     pass: "theneptune111"
                 }
             })
+            //121212
             const data = await ejs.renderFile("views/partials/verifymail.ejs", { username: req.body.username })
             var mainOptions = {
                 from: "The Neptune House",
