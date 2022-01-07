@@ -4,7 +4,7 @@ const SigupRouter = express.Router();
 
 
 //YOUR CODE HERE
-
+// Thịnh làm
 SigupRouter.get('/', SignupController.index);
 SigupRouter.get('/:id', SignupController.getVerifyEmail);
 SigupRouter.post('/', SignupController.Signup);
