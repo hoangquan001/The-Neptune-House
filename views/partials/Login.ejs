@@ -1,0 +1,91 @@
+<div class="col">
+
+    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px;">
+            <div class="modal-content " style="width: 700px;">
+                <div class=" modal-body" style="width: 700px;">
+
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-xl-20">
+                                <div class="card" style="border-radius: 1rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-lg-5 d-flex align-items-center">
+                                            <img src="https://images.unsplash.com/photo-1514517604298-cf80e0fb7f1e?crop=entropy&cs=srgb&fm=jpg&ixid=Mnw3MjAxN3wwfDF8c2VhcmNofDEzMHx8Y29mZmV8ZW58MHx8fHwxNjQwODk1NzAw&ixlib=rb-1.2.1&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450"
+                                                alt="login form" class="img-fluid"
+                                                style="border-radius: 1rem 0 0 1rem;" />
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div class="card-body p-4 p-lg-5 bg-dark  text-white ">
+
+                                                <form method="post" action="/">
+                                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                                        <span class="h5 fw-bold mb-0" style="color: white">Sign
+                                                            in</span>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4 bg-light" style="border-radius: 4px;">
+                                                        <input type="text" name="username" id="form2Example17"
+                                                            class="form-control form-control-lg" />
+                                                        <label class="form-label " for="form2Example17"><i
+                                                                class="fas fa-user"></i> Email
+                                                            address</label>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4 bg-light" style="border-radius: 4px;">
+
+                                                        <input type="password" name="password" id="form2Example27"
+                                                            class="form-control form-control-lg" />
+                                                        <label class="form-label " for="form2Example27"><i
+                                                                class="fas fa-lock"></i>
+                                                            Password</label>
+                                                    </div>
+                                                    <div class="pt-1 ">
+
+                                                        <div class="row mb-2">
+                                                            <div class="col d-flex justify-content-start">
+                                                                <!-- Checkbox -->
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        value="" id="form2Example34" checked />
+                                                                    <label class="form-check-label"
+                                                                        for="form2Example34"> Remember me </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-1 mb-4">
+                                                            <button class="btn btn-block"
+                                                                style="background-color: #FFA800; color: white"
+                                                                type="submit">Login</button>
+                                                        </div>
+                                                        <% if (locals.login) { %>
+
+                                                            <div class="alert alert-danger alert-dismissible fade show"
+                                                                role="alert">
+                                                                <span class="alert-icon align-middle">
+                                                                    <i class="fas fa-times-octagon"></i>
+                                                                </span>
+                                                                <span class="alert-text"><strong>Danger!</strong>
+                                                                    <%=login%>
+                                                                </span>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <% } %>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

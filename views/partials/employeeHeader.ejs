@@ -1,0 +1,90 @@
+<div class="header-img" style="height:140px">
+
+  <nav class=" navbar navbar-expand-lg text-white" style="height:140px">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="container">
+
+        <div class="row align-items-center">
+          <a href="/">
+            <div class="col-2">
+
+              <div class="icon p-3 " style="background-color: #786C65; border-radius:50%; height:100px; width:100px;  ">
+
+                <b class="text-white mb-0"> The Neptune House
+
+                </b>
+
+
+              </div>
+          </a>
+
+        </div>
+        <div class="col-10 d-flex flex-row-reverse" style="max-width: 70%;">
+
+          <ul class="navbar-nav  mb-2 mb-lg-0 text-white align-items-center justify-content-between"
+            style="width: 10%;">
+
+            <li class="nav-item text-white">
+              <a class="nav-link active  text-white" aria-current="page" href="#" style="font-size:20px;"> <i
+                  class="fas fa-bell"></i></a>
+            </li>
+            <li class="nav-item d-flex flex-column">
+              <% if(locals.user ){ %>
+                <div class="btn-group " style=" margin-left: 1.5rem;   top: 10px;">
+                  <button class="btn btn-secondary " type="button">
+                    <a href="/profile/<%=locals.user.id%>" class=" d-sm-flex align-items-sm-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" class="rounded-circle" height="18"
+                        alt="Black and White Portrait of a Man" loading="lazy" />
+                      <strong class="d-none d-sm-block text-white  " style="font-size:14px;">
+                        <%= locals.user.firstName %>
+                      </strong>
+                    </a>
+                  </button>
+                  <button type="button" class="btn btn-sm  dropdown-toggle dropdown-toggle-split"
+                    style="background-color: #686e74;" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Thông tin</a></li>
+                    <li><a class="dropdown-item" href="#">Thanh Toán</a></li>
+                    <li><a class="dropdown-item" href="#">Hóa đơn</a></li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a href="/logout" class="dropdown-item" href="#">LOG OUT</a></li>
+                  </ul>
+                </div>
+                <% } %>
+
+            </li>
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+</nav>
+</div>
+
+<div class="container">
+
+  <div class="mt-sm-5 fw-bold fs-1 text-center">
+    Manage
+  </div>
+  <div class="d-sm-flex  justify-content-around mt-sm-5">
+    <!-- <a class="nav-link" href="/employee">
+
+      <button type="button" class="btn btn-secondary"><i class="far fa-calendar-alt me-sm-3"></i>Lịch trực</button>
+    </a> -->
+    <a class="nav-link" href="/employee">
+
+      <button type="button" class="btn btn-secondary"><i class="fas fa-user-tag me-sm-3"></i>Đơn Hàng</button>
+    </a>
+    <a class="nav-link" href="/employee/statistical">
+      <button type="button" class="btn btn-secondary"><i class="fas fa-chart-line me-sm-3"></i>Thống Kê</button>
+    </a>
+  </div>
+
+</div>

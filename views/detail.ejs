@@ -1,0 +1,209 @@
+<h3 class="mt-5 mb-5"> <span class="text-muted ">Products ></span> Details</h3>
+
+<div class="container d-flex justify-content-center">
+
+    <% if(typeof data){ %>
+        <div class="card mb-5 " style="min-width: 65%;border-radius:10px;">
+            <div class="row g-0">
+                <div class="col-md-4 mt-3 ">
+                    <img src="/uploadphoto/<%=data.Image %>" class="img-fluid " alt="..."
+                        style="max-height:260px;max-width:230px; border-radius:30px; margin-left: 5px;">
+                    <p> This is a wider card with supporting </p>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <a class="card-text d-flex justify-content-end " href="/" style="color:black">
+                            <i class="far fa-times-circle fa-2"></i>
+                        </a>
+                        <h2 class="card-title">
+                            <%=data.TenSP %>
+                        </h2>
+                        <p class="card-text">
+                            <%=data.MoTa %>
+                        </p>
+                        <h6 class="card-title">Size</h6>
+
+
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" placeholder="S"
+                                id="size-S"
+                                style="background-color: #ffe3e3; border-radius:50%; height: 25px;width: 25px;"
+                                value="S">
+                            <label class="form-check-label" for="size-S">
+                                S
+                            </label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" placeholder="S"
+                                id="size-M"
+                                style="background-color: #ffe3e3; border-radius:50%; height: 25px;width: 25px;"
+                                value="M">
+                            <label class="form-check-label" for="size-M">
+                                M
+                            </label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" placeholder="S"
+                                id="size-L"
+                                style="background-color: #ffe3e3; border-radius:50%; height: 25px;width: 25px;"
+                                value="L">
+                            <label class="form-check-label" for="size-L">
+                                L
+                            </label>
+                        </div>
+
+
+
+
+                        <h4 class="card-title my-4" style="color: #FFA800;">
+                            <%= data.GiaBan %> đ
+                        </h4>
+
+                        <div class="row">
+                            <div class="col ">
+                                <input class=" ms-auto text-lg my-auto" type="number" id="quantity" name="quantity"
+                                    min="1" start="1" max="5" placeholder="1">
+                            </div>
+                            <div class="col">
+                                <button onclick="addToCard('<%=data._id%>')" type="button" style="border-radius:32px;"
+                                    class="btn btn-warning text-white">ADD
+                                    TO
+                                    CART</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+
+
+</div>
+
+<div class="container mt-5">
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-md-8">
+            <div class="comment-box ml-2">
+                <h4>Add a comment</h4>
+                <% var idUser=null ; if (user) idUser=user.id; %>
+                    <form method="post" id="submitdetail" action="/detail/<%=data._id%>/comment/<%=idUser%>"
+                        onsubmit="return showModalDetail(this);">
+                        <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input
+                                type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio"
+                                name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio"
+                                name="rating" value="1" id="1"><label for="1">☆</label>
+                        </div>
+                        <div class="comment-area" style="width: 100%;"> <textarea name="boxcomment" class="form-control"
+                                placeholder="what is your view?" rows="4"></textarea> </div>
+                        <div class="comment-btns mt-2">
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <but class="pull-left"> <button type="submit"
+                                            class="btn btn-success send btn-sm">Send
+                                            <i class="fa fa-long-arrow-right ml-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-3 ">
+    <div class="col-md-8 ">
+        <div class="headings d-flex justify-content-between align-items-center mb-1">
+            <h5>Unread comments(<%=Comments.length%>)
+            </h5>
+
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+    <div class="col-md-8 " style="    max-height: 386px; overflow-x: hidden;">
+
+        <% for(var i=0; i < Comments.length; i++) {%>
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img
+                            src="/uploadphoto/<%=Comments[i].MaKH.Avatar%>" width="30"
+                            class="user-img rounded-circle mr-2">
+                        <span class="font-weight-bold color-primary">
+                            <%=Comments[i].MaKH.HoTen %>
+                        </span>
+                    </div> <small>
+                        <%=Comments[i].NgayDang.toLocaleDateString() %>
+                    </small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4">
+                        <small>
+                            <%=Comments[i].Comment[0] %>
+                        </small>
+                    </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i>
+                        <%=Comments[i].Star %>
+                            <i class="fa fa-check-circle-o check-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+    function showModalDetail(e) {
+        var isLogin = !'<%-locals.user %>'
+        if (isLogin) {
+            $('#modal-notify-login').modal('show')
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+<div class="col-md-4">
+    <div class="modal" id="modal-notify-login" tabindex="-1" role="dialog" aria-labelledby="modal-notify"
+        aria-hidden="true">
+        <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" onclick="$('#modal-notify-login').modal('hide')"
+                        aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="fas fa-exclamation-triangle fa-3x " style="color: #FEB700"></i>
+
+                        <h4 class="text-gradient text-danger mt-4">Bạn Chưa Đăng Nhập!!</h4>
+                        <p>Vui lòng đăng nhập để bình luận!!
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+
+                    <button type="button" onclick="$('#modal-notify-login').modal('hide')"
+                        class="btn text-white ml-auto" aria-hidden="true"
+                        style="width: 200px; background-color:#FEB700;">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

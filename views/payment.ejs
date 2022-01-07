@@ -1,0 +1,477 @@
+<div class="container" style="margin-bottom: 20%;">
+
+
+    <!-- search -->
+
+    <!-- search -->
+
+    <!-- TITLE -->
+    <form id="submit-form" method="post" action="/payment">
+        <h2 class="text-black mb-5">Giỏ hàng của bạn</h2>
+        <!-- TITLE -->
+
+        <div class="row g-3">
+
+            <div class=" col-lg-8 col-sm-12 shadow-lg"
+                style=" height:528px; overflow-x: hidden;<% if(listProducts.length==0) { %> 
+                background-image: url('https://hoplongtech.com/uploads/1.0.1/emptycart.png');background-repeat:    no-repeat;background-size:contain; <% } %>">
+                <div class="row g-3 h-100 align-content-start">
+
+                    <% for(var i=0; i < listProducts.length; i++) {%>
+
+
+
+                        <!-- cart -->
+                        <div id="<%=listProducts[i].product._id%>" class="w-100" style="height:160px;">
+
+                            <div class="h-100 shadow p-3 bg-white row ">
+                                <div class="col-3">
+                                    <div class="h-100 img-fluid" style="max-width:118px; background-image: url('/uploadphoto/<%=listProducts[i].product.Image%> ');
+                                    border-radius:30px; 
+                                        background-size: cover; 
+                                        background-repeat: no-repeat; 
+                                        background-position: center; 
+                                    ">
+                                    </div>
+                                </div>
+
+                                <div class="col-7">
+
+                                    <div class="row h-100">
+
+                                        <div class="row h-50">
+                                            <p4 class="text-black"> <b>
+                                                    <%=listProducts[i].product.TenSP %>
+                                                </b> </p4>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6  d-flex flex-column justify-content-around">
+
+                                                <div class="w-100">SIZE</div>
+
+                                                <div class="w-75 d-flex justify-content-between">
+                                                    <div class="form-check " style="padding-left: 0;">
+                                                        <input class="form-check-input" type="radio" name="SIZE<%=i%>"
+                                                            placeholder="S" id="size-S"
+                                                            style="background-color: #ffe3e3;   " height=" 20" value="S"
+                                                            checked>
+
+                                                        <label class="form-check-label" for="size-S">
+                                                            S
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check" style="padding-left: 1rem;">
+                                                        <input class="form-check-input" type="radio" name="SIZE<%=i%>"
+                                                            placeholder="S" id="size-M" style="background-color:#ffe3e3"
+                                                            height=" 20" value="M">
+                                                        <label class="form-check-label" for="size-M">
+                                                            M
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check" style="padding-left: 1rem;">
+                                                        <input class="form-check-input" type="radio" name="SIZE<%=i%>"
+                                                            placeholder="S" id="size-L"
+                                                            style="background-color: #ffe3e3;" height=" 20" value="L">
+                                                        <label class="form-check-label" for="size-L">
+                                                            L
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="col-6 d-flex flex-column justify-content-around">
+
+                                                <div class="w-100">SUGAR</div>
+                                                <div class="w-75 d-flex justify-content-between">
+                                                    <div class="form-check " style="padding-left: 0;">
+                                                        <input class="form-check-input" type="radio" name="SUGAR<%=i%>"
+                                                            placeholder="S" id="size-S"
+                                                            style="background-color: #ffe3e3;   " height=" 20"
+                                                            value="30" checked>
+
+                                                        <label class="form-check-label mx-0" for="size-S">
+                                                            30%
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check" style="padding-left: 1rem;">
+                                                        <input class="form-check-input" type="radio" name="SUGAR<%=i%>"
+                                                            placeholder="S" id="size-M" style="background-color:#ffe3e3"
+                                                            height=" 20" value="50">
+                                                        <label class="form-check-label mx-0" for="size-M">
+                                                            50%
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check" style="padding-left: 1rem;">
+                                                        <input class="form-check-input" type="radio" name="SUGAR<%=i%>"
+                                                            placeholder="S" id="size-L"
+                                                            style="background-color: #ffe3e3;" height=" 20" value="70">
+                                                        <label class="form-check-label mx-0" for="size-L">
+                                                            70%
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col-2 d-flex h-100 justify-content-between flex-column align-items-end">
+
+                                    <div class="row">
+
+
+                                        <i onclick="removeCart('<%=listProducts[i].product._id%>','<%=listProducts[i].product.GiaBan%>')"
+                                            class="fas fa-trash" style="font-size:20px;cursor:pointer"></i>
+                                    </div>
+
+                                    <div clas="row">
+                                        <input
+                                            onchange="changeQuantity('<%=listProducts[i].product._id%>','<%=listProducts[i].product.GiaBan%>')"
+                                            id="quantity<%=listProducts[i].product._id%>"
+                                            class=" ms-auto text-lg my-auto" type="number" id="quantity" name="quantity"
+                                            value=<%=listProducts[i].numItem%>
+                                        min="1" start="1" max="5" >
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- cart -->
+
+
+
+                        <% } %>
+
+
+                </div>
+
+
+            </div>
+            <!--  -->
+            <!-- COL 2 -->
+            <div class="col-lg-4 col-sm-12  d-flex flex-column ">
+
+                <div class=" shadow mx-3 p-3 mb-3 h-100 d-flex flex-wrap ">
+                    <div class=" w-100">
+                        <h4 class="text-center mb-3">Bills</h4>
+                    </div>
+
+                    <div class="row border " style="height:226px;overflow-x: hidden; width: 100%;margin: 0;">
+
+
+                        <% listProducts.forEach(function(item) { %>
+                            <div id="bill<%=item.product._id%>" class="row mx-0 " style="height:56px;">
+
+                                <p4 class="text-black"> <b>
+                                        <%=item.product.TenSP %>
+                                    </b> </p4>
+                                <div class="text-black d-flex justify-content-between  ">
+                                    <span id="number<%=item.product._id%>">
+                                        x<%=item.numItem %>
+                                    </span>
+                                    <span id="price<%=item.product._id%>">
+                                        <%=item.product.GiaBan*item.numItem %>đ
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <% }); %>
+                    </div>
+
+
+                    <div class="row mx-0 mt-auto w-100 border-top border-3 align-items-center   
+                " style="height:80px;">
+
+                        <div class="col-12">
+                            <div class="row">
+
+                                <div class="col-9">
+                                    TOTAL
+                                </div>
+                                <div id="TongTienThanhToan" class="col">
+                                    <%=locals.TongTien%>đ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-9">
+                                    PAYMENT METHOD
+                                </div>
+                                <div class="col">
+                                    COD
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="d-flex justify-content-center px-3   " style="height:76px;   ">
+
+                    <button id="BtnDatHang" type="button" onclick="showModal()" class="btn btn-warning w-100 mb-0 ">
+                        <h4 class="text-white">
+                            ĐẶT HÀNG
+                        </h4>
+                    </button>
+                </div>
+
+            </div>
+            <!-- COL 2 -->
+        </div>
+
+        <!-- Modal -->
+
+
+        <!-- Modal payment -->
+        <div class="modal fade" id="ModalPayMent" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="max-width: 700px;">
+                <div class=" modal-content" style="width: 700px;">
+                    <div class="modal-body p-0" style="width: 700px;">
+
+                        <div class="card card-plain ">
+
+                            <div class="card-header text-black text-center p-5 " style="background-color: #FEB700;">
+                                <div class="d-flex justify-content-start">
+                                    <a class="form text-left" href="/payment"><i
+                                            class="fas fa-chevron-left text-muted"></i>
+                                        Back to your cart</a>
+                                </div>
+                                <h3 class="">Payment Detail</h3>
+
+                            </div>
+                            <div class="card-body pb-3">
+
+                                <h6>
+                                    Name
+                                </h6>
+                                <div class="form-outline my-3">
+                                    <input name="HoTen" type="text" id="HTen" class="form-control bg-light" required>
+                                    <label class="form-label" for="HTen">
+                                        Enter your phone name
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Please provide a phone name.
+                                    </div>
+                                </div>
+                                <h6>
+                                    Address
+                                </h6>
+                                <div class="form-outline my-3">
+                                    <input name="DiaChi" type="text" id="DiaChi" class="form-control bg-light" required>
+                                    <label class="form-label" for="DiaChi">
+                                        Enter your phone address
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Please provide a phone address.
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <h6>
+                                            Phone number
+                                        </h6>
+                                        <div class="form-outline">
+                                            <input name="SDT" type="text" id="SDT" class="form-control bg-light"
+                                                required>
+                                            <label class="form-label" for="SDT">
+                                                Enter your phone number
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                Please provide a phone number.
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>
+                                            Email
+                                        </h6>
+                                        <div class="form-outline">
+                                            <input name="Email" type="email" id="mail" class="form-control bg-light"
+                                                required>
+                                            <label class="form-label" for="mail">
+                                                Enter your email
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                Please provide a phone number.
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                            id="floatingTextarea2" style="height: 100px"></textarea>
+                                        <label for="floatingTextarea2">Note</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col d-flex justify-content-start">
+                                        <h6>
+                                            Total:
+                                        </h6>
+
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <h5>
+                                            500000 vnđ
+                                        </h5>
+
+                                    </div>
+                                </div>
+                                <div class="text-center d-flex justify-content-end mb-3">
+                                    <button type="submit" class="btn btn-rounded mt-4 mb-0 text-white"
+                                        style="background-color: #FEB700; width:200px ;">Thanh Toán</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<!-- </div> -->
+<!-- MODEL PAYMENT -->
+
+
+
+<script>
+    function showModal() {
+        var isLogin = !'<%-locals.user %>'
+
+        if (isLogin) {
+            $("#modal-notification-login").modal('toggle');
+        }
+        else {
+            $("#ModalPayMent").modal('toggle');
+        }
+    }
+
+
+</script>
+
+<!-- empty -->
+
+
+<div class="modal fade" id="modal-notification-empty" tabindex="-1" role="dialog"
+    aria-labelledby="modal-notification-empty" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="showModal()"
+                    aria-label="Close">
+
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-smile-beam fa-3x " style="color: #FEB700"></i>
+                    <h4 class="text-gradient text-danger mt-4">Giỏ hàng đang trống</h4>
+                    <p>Vui lòng quay lại trang mua hàng!!
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+
+
+                <button type="button" class="btn text-white ml-auto" data-bs-dismiss="modal" onclick="showModal()"
+                    style="width: 200px; background-color:#FEB700;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- sucuss -->
+
+<div class="modal fade" id="modal-notification-success" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" onclick="$('#modal-notification-success').modal('hide')"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-smile-beam fa-3x " style="color: #FEB700"></i>
+
+                    <h4 class="text-gradient text-danger mt-4">Đặt hàng thành công!!</h4>
+                    <p>Đơn hàng sẽ được chuẩn bị ,Cảm ơn quý khách đã mua hàng !!
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+
+
+                <button type="button" class="btn text-white ml-auto"
+                    onclick="$('#modal-notification-success').modal('hide')"
+                    style="width: 200px; background-color:#FEB700;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% if (locals.message) if (message==='paymentsuccess' ) { %>
+    <script>
+        // console.log('<%-message%>')
+        $("#modal-notification-success").modal('show');
+    </script>
+    <% } %>
+
+        <div class="col-md-4">
+
+            <div class="modal fade" id="modal-notification-login" tabindex="-1" role="dialog"
+                aria-labelledby="modal-notification" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button onclick="showModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close">
+
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="py-3 text-center">
+                                <i class="fas fa-exclamation-triangle fa-3x " style="color: #FEB700"></i>
+
+                                <h4 class="text-gradient text-danger mt-4">Bạn Chưa Đăng Nhập!!</h4>
+                                <p>Vui lòng đăng nhập để tiếp tục mua hàng!!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+
+                            <button type="button" onclick="showModal()" class="btn text-white ml-auto"
+                                data-bs-dismiss="modal" aria-hidden="true"
+                                style="width: 200px; background-color:#FEB700;">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

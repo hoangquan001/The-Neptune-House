@@ -1,0 +1,481 @@
+<div>
+  <div class="row" style="margin: 0">
+    <div class="col-sm-2 bg-dark" style="min-height: 600px; margin: 0; padding: 0">
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-3
+          flex-column
+        ">
+        <img src="/img/admin/100k-ai-faces-5.jpg" style="margin-left: auto; margin-right: auto"
+          class="rounded-circle justify-content-center d-block" width="75" height="75" />
+        <h3 class="text-success">Ana</h3>
+        <a href="" style="text-decoration: none">
+          <h6 class="text-warning" style="text-decoration: underline; font-size: 9px">
+            Admin
+          </h6>
+        </a>
+      </div>
+
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-5
+          flex-column
+        ">
+        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+          <div class="d-flex align-items-center" style="min-width: 90px">
+            <img src="/img/admin/clarity_employee-solid.png" width="15px" height="15px" alt="first icon" />
+            <div style="margin-left: 8px">Employee</div>
+          </div>
+        </button>
+        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+          <div class="d-flex align-items-center" style="min-width: 90px">
+            <img src="/img/admin/Vector.png" width="15px" height="15px" alt="first icon" />
+            <div style="margin-left: 8px">Website</div>
+          </div>
+        </button>
+        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+          <div class="d-flex align-items-center" style="min-width: 90px">
+            <img src="/img/admin/card.png" width="15px" height="15px" alt="first icon" />
+            <div style="margin-left: 8px">Website</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-5
+          flex-column
+        ">
+        <div class="d-flex align-items-center" style="min-width: 90px">
+          <button type="button" class="btn btn-outline-secondary">
+            <a class="text-white  text-decoration-none" href="/logout">
+              <div class="d-flex align-items-center" style="min-width: 90px">
+                <img src="/img/admin/logout.png" width="15px" height="15px" alt="first icon" />
+                <div style="margin-left: 8px">Log out</div>
+              </div>
+            </a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <%# Cột 2 %>
+      <div class="col-sm-10 bg-white d-flex flex-column" style="padding: 0 0">
+        <div class="d-flex align-items-center ms-sm-3 mt-sm-3" style="margin: 0; padding: 0; box-sizing: border-box">
+          <span class="me-sm-2"><b class="fw-bold fs-4">Dashboard</b> </span>
+          <span><button type="button" data-bs-toggle="modal" data-bs-target="#modal-form"
+              class="btn btn-outline-secondary mt-sm-3" style="outline: none; border: none">
+              + New
+            </button></span>
+        </div>
+        <hr />
+
+        <div class="row" style="margin: 0; width: 100%">
+          <div class="d-inline-flex mt-sm-4" style="min-width: 98%; max-height: 45px">
+            <div class="
+              d-flex
+              justify-content-between
+              align-items-center
+              flex-row-reverse
+              px-3
+            " style="max-height: 50px; min-width: 100%">
+              <div class="d-flex justify-content-between align-items-center" style="min-width: 440px">
+                <a href="#">
+                  <img src="/img/admin/fa-regular_bell.png" width="28" height="38" alt="" />
+                </a>
+
+                <div class="btn-group" style="max-height: 50px; max-width: 150px">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin: 0">
+                    Setting
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                  </ul>
+                </div>
+
+                <!-- seach -->
+                <form action="/admin/staff/search">
+                  <input name="key" type="text" class="form-control right-icon" />
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-bold mt-3 ms-3 mb-3" style="position: relative; max-height: 50px" id="">
+          <h3 class="ps-2 fw-bold">Employee</h3>
+        </div>
+
+        <div class="container-sm px-sm-4 g-3">
+          <% for(var i=0; i < staffs.length; i++) { %>
+
+            <div class="row mb-3" style="
+            background: #f9f9f9;
+            box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.25);
+          ">
+
+              <div class="col-sm-2">
+                <img src="/uploadphoto/<%=staffs[i].Avatar%>" style="border-radius: 50%" alt="" width="100" height="100"
+                  class="my-sm-4 ms-sm-3" />
+              </div>
+              <div class="col-sm-10">
+                <div class="
+                d-flex
+                align-items-center
+                d-flex
+                justify-content-between
+                px-sm-4
+                pt-sm-4
+              ">
+                  <h5 class="fw-bold">
+                    <%=staffs[i].HoTen %>
+                  </h5>
+                  <a href="/admin/staff/delete/<%=staffs[i]._id%>" id="delete">
+                    <img src="/img/admin/thungrac.png" width="26" height="28" alt="" />
+                  </a>
+                </div>
+                <div class="px-sm-4" style="margin: 0; max-width: 70%">
+                  <p class="" style="font-size: 13px">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores, obcaecati eos reprehenderit vero illo maxime animi,
+                    temporibus cupiditate.
+                  </p>
+                </div>
+
+                <div id="buttons_employee" class="d-flex justify-content-end">
+                  <button type="button" class="btn me-sm-3" style="
+                  border-radius: 18px;
+                  background: #ffddf1;
+                  border: 1px solid #e936c1;
+                " data-bs-toggle="modal" data-bs-target="#EditModal" data-bs-whatever="<%=i%>">
+                    <span class=" color_buttons_emp_2"> Edit infor </span>
+                  </button data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+
+
+                  <button type="button" class="btn" style="
+                  border-radius: 18px;
+                  background: #ffddf1;
+                  border: 1px solid #e936c1;
+                " data-bs-toggle="modal" data-bs-target="#modal-default" data-bs-whatever="<%=i%>">
+                    <span class="color_buttons_emp_1">See more</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+            <!-- Edit modal -->
+
+            <!-- view -->
+            <% } %>
+
+
+              <div class="d-flex container flex-row-reverse align-items-center p-sm-5">
+                <i class="far fa-caret-square-right ms-sm-4 fs-3"></i>
+                <i class="far fa-caret-square-left fs-3"></i>
+
+              </div>
+
+
+
+
+        </div>
+      </div>
+  </div>
+  <!-- New staffs-->
+
+  <div class="col-md-4">
+
+    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="width: 700px;">
+        <div class="modal-content " style="width:500px;">
+          <div class="modal-body " style="width:500px;">
+            <div class="card card-plain">
+              <div class="card-header pb-0 text-left">
+                <h5 class="">Add New Employee</h5>
+
+              </div>
+              <div class="card-body">
+                <form id="formAction" role="form text-left" method="post" action="/admin/staff">
+                  <div class="input-group input-group-static mb-4">
+                    <label>Họ Tên Nhân Viên</label>
+                    <input type="text" name="Name" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static my-3">
+                    <label>Ngày sinh</label>
+                    <input type="datetime-local" name="birth" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Địa chỉ</label>
+                    <input type="text" name="Address" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Số điện thoại</label>
+                    <input type="text" name="PhoneNumber" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Loại nhân viên</label>
+                    <input type="text" name="Position" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Mức Lương </label>
+                    <input type="text" name="Salary" class="form-control">
+                  </div>
+                  <div class="input-group input-group-static my-3">
+                    <label>Ngày bắt đầu</label>
+                    <input type="datetime-local" name="dateStart" class="form-control">
+                  </div>
+
+
+
+                </form>
+
+                <div class="input-group input-group-static my-3">
+                  <label>Chọn Hình Ảnh</label>
+
+                  <input type="file" id="addInput" name="myImage" accept="image/*">
+
+                </div>
+
+                <div class="text-center">
+                  <button type="button" onclick="submitForms('#addInput','#formAction')"
+                    class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0 clicked_only_time">
+                    Add
+                    new
+                  </button>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- view -->
+
+
+<div class="col-md-4">
+  <!-- Modal -->
+
+  <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+              <h5 class="">Edit Employee</h5>
+
+            </div>
+            <div class="card-body pb-3">
+              <form id="form-Edit" role="form text-left" method="post">
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label editname" id="name-edit">
+                    Họ Tên
+                  </label>
+                  <input type="text" name="hoten" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="diachi-edit">
+                    Địa chỉ
+                  </label>
+                  <input type="text" name="diachi" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="sdt-edit">
+                    Số điện thoại
+                  </label>
+                  <input type="text" name="sdt" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="chucvu-edit">
+                    Loại NV
+                  </label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="luong-edit">
+                    Mức Lương
+                  </label>
+                  <input type="text" name="luong" class="form-control">
+                </div>
+
+
+              </form>
+
+              <div class="input-group input-group-outline my-3">
+                <div>avatar</div>
+                <input class="form-control form-control-sm" id="formFileEdit" type="file" />
+              </div>
+              <div class="text-center">
+                <button type="button" onclick="submitForms('#formFileEdit','#form-Edit')"
+                  class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0 clicked_only_time">Save
+                  edit</button>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  submitForms = function (id1, id2) {
+    var input = document.querySelector(id1)
+    if (input.files.length === 0) {
+      $(id2).submit()
+      return true;
+    }
+    document.querySelector(".clicked_only_time").disabled = true;
+    var formData = new FormData()
+    formData.append('myImage', input.files[0])
+    fetch('/uploadphoto', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        $(id2).append(`<input type="hidden" name="img" value=${data} /> `);
+        $(id2).submit()
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+  }
+</script>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+      aria-hidden="true">
+      <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h6 class="modal-title font-weight-normal" id="modal-title-default">Chi tiết nhân viên </h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="..." class="card-img-top-detail img" width="141" alt="Trendy Pants and Shoes"
+                    class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title Pername">Lê Thanh Hiệp</h5>
+
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <label>Địa chỉ:</label>
+                    <li class="list-group-item address"> 12, Trường Chinh,TP.HCM</li>
+                    <label>Lương:</label>
+                    <li class="list-group-item salary">Lương: 2000000vnd</li>
+                    <label>SĐT</label>
+                    <li class="list-group-item phone">SĐT: 034565474</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<script>
+  var exampleModal1 = document.getElementById('modal-default')
+  exampleModal1.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    var index = button.getAttribute('data-bs-whatever')
+    var i = parseInt(index)
+    var test = '<%- JSON.stringify(staffs) %>';
+    var staffs = JSON.parse(test)
+
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    var Name = exampleModal1.querySelector('.Pername')
+    var add = exampleModal1.querySelector('.address')
+    var phone = exampleModal1.querySelector('.phone')
+    var salary = exampleModal1.querySelector('.salary')
+    var img = exampleModal1.querySelector('.img')
+    console.log(staffs)
+    img.src = `/uploadphoto/${staffs[i].Avatar}`
+    Name.textContent = staffs[i].HoTen
+    add.textContent = staffs[i].DiaChi
+    phone.textContent = staffs[i].SDT
+    salary.textContent = staffs[i].Luong
+
+  })
+      // Update the modal's content.
+</script>
+<script>
+  var EditModal = document.getElementById('EditModal')
+  EditModal.addEventListener('show.bs.modal', function (event) {
+
+    var button = event.relatedTarget
+    var index = button.getAttribute('data-bs-whatever')
+    var i = parseInt(index)
+    var test = '<%- JSON.stringify(staffs) %>';
+    var staffs = JSON.parse(test)
+
+    var id = EditModal.querySelector('.editname')
+    var action = document.getElementById("form-Edit");
+    action.action = "/admin/staff/edit/" + staffs[i]._id
+
+    var name = EditModal.querySelector('#name-edit')
+    var addr = EditModal.querySelector('#diachi-edit')
+    var phone = EditModal.querySelector('#sdt-edit')
+    var position = EditModal.querySelector('#chucvu-edit')
+    var salary = EditModal.querySelector('#luong-edit')
+    name.textContent = staffs[i].HoTen
+    addr.textContent = staffs[i].DiaChi
+    phone.textContent = staffs[i].SDT
+    position.textContent = staffs[i].LoaiNV
+    salary.textContent = staffs[i].Luong
+
+  })
+</script>

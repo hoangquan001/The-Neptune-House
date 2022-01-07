@@ -1,0 +1,461 @@
+<div>
+  <div class="row" style="margin: 0">
+    <div class="col-sm-2 bg-dark" style="min-height: 600px; margin: 0; padding: 0">
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-3
+          flex-column
+        ">
+        <img src="/img/admin/100k-ai-faces-5.jpg" style="margin-left: auto; margin-right: auto"
+          class="rounded-circle justify-content-center d-block" width="75" height="75" />
+        <h3 class="text-success">Ana</h3>
+        <a href="" style="text-decoration: none">
+          <h6 class="text-warning" style="text-decoration: underline; font-size: 9px">
+            Admin
+          </h6>
+        </a>
+      </div>
+
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-5
+          flex-column
+        ">
+
+        <a href="/admin/staff">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/clarity_employee-solid.png" width="15px" height="15px" alt="first icon" />
+
+              <div style="margin-left: 8px">Employee</div>
+
+            </div>
+          </button>
+        </a>
+        <a href="/">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/Vector.png" width="15px" height="15px" alt="first icon" />
+
+              <div style="margin-left: 8px">Product</div>
+
+            </div>
+          </button></a>
+        <a href="/">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/card.png" width="15px" height="15px" alt="first icon" />
+              <div style="margin-left: 8px">Website</div>
+            </div>
+          </button>
+        </a>
+      </div>
+
+      <div class="
+          container
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-sm-5
+          flex-column
+        ">
+
+
+        <div class="d-flex align-items-center" style="min-width: 90px">
+          <button type="button" class="btn btn-outline-secondary">
+            <a class="text-white  text-decoration-none" href="/logout">
+              <div class="d-flex align-items-center" style="min-width: 90px">
+                <img src="/img/admin/logout.png" width="15px" height="15px" alt="first icon" />
+                <div style="margin-left: 8px">Log out</div>
+              </div>
+            </a>
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+
+    <%# Cột 2 %>
+      <div class="col-sm-10 bg-white d-flex flex-column" style="padding: 0 0">
+        <div class="row" style="margin: 0; width: 100%">
+          <div class="d-inline-flex mt-sm-4" style="min-width: 98%; max-height: 45px">
+            <div class="d-flex justify-content-between align-items-center px-3"
+              style="max-height: 50px; min-width: 100%">
+              <button class="btn btn-primary d-flex align-items-center fw-bold" data-bs-toggle="modal"
+                data-bs-target="#exampleModalSignUp" style="margin: 0">
+                + New
+              </button>
+
+              <div class="d-flex justify-content-between align-items-center" style="min-width: 440px">
+                <a href="#">
+                  <img src="/img/admin/fa-regular_bell.png" width="28" height="38" alt="" />
+                </a>
+
+                <div class="btn-group" style="max-height: 50px; max-width: 150px">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin: 0">
+                    Setting
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                  </ul>
+                </div>
+
+                <div class="input-group" style="max-width: 230px; margin: 0; min-height: 55px">
+                  <form action="/admin/product/search">
+                    <input name="key" type="text" class="form-control right-icon" />
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-bold mt-3 ms-3 mb-3" style="position: relative; max-height: 50px" id="">
+          <h3 class="ps-2 fw-bold">Product</h3>
+        </div>
+
+        <div class="d-flex px-sm-3" style="width: 100%">
+          <div class="align-items-center flex-column" style="padding: 0">
+            <input type="checkbox" />
+          </div>
+
+          <div class="row d-flex justify-content-between fw-bold align-items-center px-sm-5  " style="width: 100%">
+            <div class="col-3">
+              ProductsID
+            </div>
+            <div class="col-3">
+              Name
+            </div>
+            <div class="col-2">
+              Price
+            </div>
+            <div class="col-3">
+              Option
+            </div>
+            <div class="col-1">
+              Status
+            </div>
+
+          </div>
+        </div>
+        <% for(var i=0; i < products.length; i++) { %>
+          <div class="d-flex align-items-center px-sm-3 mt-sm-3" style="
+          width: 100%;
+          background-color: #f9f9f9;
+          box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.25);
+          height: 77px;
+        ">
+            <div style="padding: 0">
+              <input type="checkbox" />
+            </div>
+            <div class="   row d-flex   justify-content-between       fw-bold      align-items-center     px-sm-5
+          " style="width: 100%">
+              <div class="col-3" style="overflow-wrap: anywhere;              ">
+                <%=products[i]._id %>
+              </div>
+              <div class="col-3" style="overflow-wrap: anywhere;              ">
+                <%=products[i].TenSP %>
+              </div>
+              <div class="col-2">
+                <%=products[i].GiaBan %>
+              </div>
+              <div class="col-3">
+                <span class="d-flex align-items-center">
+                  <button type="button" class="btn m-0" data-bs-toggle="modal" data-bs-target="#modal-default"
+                    data-bs-whatever=<%=i%>>
+                    <span class=" me-sm-1"><img src="/img/admin/Rectangle 90.png" />
+                    </span>
+                  </button>
+                  <button type="button" class="btn m-0" data-bs-toggle="modal" data-bs-target="#ShowEditProduct"
+                    data-bs-whatever=<%=i%> >
+
+                    <span class=" me-sm-1">
+                      <img src="/img/admin/ghichu.png" alt="" />
+                    </span>
+                  </button>
+                  <span class=" me-sm-1">
+                    <a href="/admin/product/delete/<%=products[i]._id %>">
+                      <img src="/img/admin/thungrac.png" alt="" />
+                    </a>
+                  </span>
+                </span>
+              </div>
+              <div class="col-1">
+                <span><img src="/img/admin/eyes.png" alt="" /></span>
+              </div>
+            </div>
+          </div>
+          <% } %>
+            <div class="d-flex container flex-row-reverse align-items-center p-sm-5">
+              <i class="far fa-caret-square-right ms-sm-4 fs-3"></i>
+              <i class="far fa-caret-square-left fs-3"></i>
+            </div>
+      </div>
+  </div>
+</div>
+<!-- Add new products -->
+
+<div class="col-md-4">
+  <!-- Modal add-->
+  <div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+              <h5 class="">Thêm sản phẩm</h5>
+            </div>
+            <div class="card-body pb-3">
+              <form role="form text-left" id="formAddProduct" method="post" action="/admin/product">
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label">Tên sản phẩm</label>
+                  <input type="text" name="ten" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label">Loại</label>
+                  <input type="text" name="loai" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label">Giá Bán</label>
+                  <input type="text" name="gia" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label">Mô tả</label>
+                  <input type="text" name="mota" class="form-control">
+                </div>
+
+
+
+
+              </form>
+              <div class="input-group input-group-outline my-3">
+                <input class="form-control form-control-sm" id="formFileAddProduct" type="file" />
+              </div>
+              <div class="text-center">
+                <button type="button" onclick="submitForms('#formFileAddProduct','#formAddProduct')"
+                  class="btn bg-gradient-info btn-lg btn-rounded w-100 mt-4 mb-0 clicked_only_time">Add
+                  new</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <!-- Modal edit-->
+  <div class="modal fade" id="ShowEditProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle2"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+              <h5 class="">Edit Product</h5>
+            </div>
+            <div class="card-body pb-3">
+              <form id="form-EditPro" role="form text-left" method="post">
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label editname" id="namesp-edit">
+                    Tên Sản phẩm
+                  </label>
+                  <input type="text" name="tensp" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="gia-edit">
+                    Giá sản phẩm
+                  </label>
+                  <input type="text" name="giasp" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="loai-edit">
+                    Loại
+                  </label>
+                  <input type="text" name="loai" class="form-control">
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <label class="form-label" id="mota-edit">
+                    Mô tả
+                  </label>
+                  <input type="text" name="mota" class="form-control">
+                </div>
+
+              </form>
+              <div class="input-group input-group-outline my-3">
+                <input class="form-control form-control-sm" id="formFileEditProduct" type="file" />
+              </div>
+              <div class="text-center">
+                <button type="button" onclick="submitForms('#formFileEditProduct','#form-EditPro')"
+                  class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0 clicked_only_time">Save
+                  edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  submitForms = function (id1, id2) {
+    document.querySelector(".clicked_only_time").disabled = true;
+    var input = document.querySelector(id1)
+    if (input.files.length === 0) {
+      $(id2).submit()
+      return true;
+    }
+    var formData = new FormData()
+    formData.append('myImage', input.files[0])
+    fetch('/uploadphoto', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        $(id2).append(`<input type="hidden" name="img" value=${data} /> `);
+        $(id2).submit()
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+  }
+</script>
+
+
+
+<div class="col-md-4">
+  <!-- Modal close-->
+  <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+    aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title font-weight-normal" id="modal-title-default">Chi tiết sản phẩm</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img id="hinh" src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title" id="NamePro">Chi tiết sản phẩm</h3>
+                <div class="row d-flex align-items-start">
+                  <div class="col-3">
+                    <label>Mô Tả: </label>
+                  </div>
+                  <div class="col-9">
+                    <p class="card-text" id="Mota">
+                      This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.
+                    </p>
+                  </div>
+                </div>
+                <div class="row d-flex align-items-start">
+                  <div class="col-3">
+                    <label>Giá: </label>
+                  </div>
+                  <div class="col-9">
+                    <p class="card-text" id="Gia">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row d-flex align-items-start">
+                  <div class="col-3">
+                    <label>Loại: </label>
+                  </div>
+                  <div class="col-9">
+                    <p class="card-text" id="Loai">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer mt-3">
+            <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var Editmodal = document.getElementById('ShowEditProduct')
+  Editmodal.addEventListener('show.bs.modal', function (event) {
+
+    var button = event.relatedTarget
+    var index = button.getAttribute('data-bs-whatever')
+    var i = parseInt(index)
+
+    var test = '<%- JSON.stringify(products) %>';
+    var products = JSON.parse(test)
+    var id = Editmodal.querySelector('.editname')
+    var action = document.getElementById("form-EditPro");
+    action.action = "/admin/product/edit/" + products[i]._id
+    var tensp = Editmodal.querySelector('#namesp-edit')
+    var giasp = Editmodal.querySelector('#gia-edit')
+    var loai = Editmodal.querySelector('#loai-edit')
+    var mota = Editmodal.querySelector('#mota-edit')
+    tensp.textContent = products[i].TenSP
+    loai.textContent = products[i].LoaiSP
+    giasp.textContent = products[i].GiaBan
+    mota.textContent = products[i].MoTa
+  })
+      // Update the modal's content.
+</script>
+<script>
+  var exampleModal = document.getElementById('modal-default')
+  exampleModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var index = button.getAttribute('data-bs-whatever')
+    var i = parseInt(index)
+    var test = '<%- JSON.stringify(products) %>';
+    var products = JSON.parse(test)
+    var Hinh = exampleModal.querySelector('#hinh')
+    var TenSP = exampleModal.querySelector('#NamePro')
+    var MotaSP = exampleModal.querySelector('#Mota')
+    var GiaSP = exampleModal.querySelector('#Gia')
+    var Loai = exampleModal.querySelector('#Loai')
+    var link = products[i].Image
+    Hinh.src = `/uploadphoto/${products[i].Image}`
+    TenSP.textContent = products[i].TenSP
+    Loai.textContent = products[i].LoaiSP
+    GiaSP.textContent = products[i].GiaBan
+    MotaSP.textContent = products[i].MoTa
+  })
+      // Update the modal's content.
+</script>

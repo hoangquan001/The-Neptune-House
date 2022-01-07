@@ -1,0 +1,125 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<div class="header-img position-relative  " style="height:130px ;top:0;left:0; right:0; z-index: 100;">
+    <div class="container h-100">
+        <nav class=" navbar navbar-expand-lg text-white h-100 justify-content-between">
+
+
+            <div class="col-2 d-flex align-items-center">
+                <a aria-current="page" href="/home">
+                    <div class="icon p-3 img-fluid "
+                        style="background-color: #786C65; border-radius:50%; height:100px; width:100px;   ">
+
+                        <b class="text-white mb-1"> The Neptune House
+
+                        </b>
+                    </div>
+
+                </a>
+
+            </div>
+            <div class="col-10 h-100">
+
+                <div class="row h-100">
+
+
+                    <ul class="col-6 navbar-nav me-auto mb-2 mb-lg-0 text-white align-items-center h-100 ">
+
+
+                        <li class="nav-item text-white mx-1">
+                            <a class="nav-link active  text-white" aria-current="page" href="/home"> HOME</a>
+                        </li>
+                        <li class="nav-item text-white  mx-1">
+                            <a class="nav-link active  text-white" aria-current="page" href="#"> KHUYẾN MÃI</a>
+                        </li>
+                        <li class="nav-item text-white  mx-1">
+                            <a class="nav-link active  text-white" aria-current="page" href="#">SẢN PHẨM</a>
+                        </li>
+                        <li class="nav-item text-white  mx-1">
+                            <a class="nav-link active  text-white" aria-current="page" href="#"> ABOUT US</a>
+                        </li>
+
+
+                    </ul>
+                    </ul>
+
+                    <div class="col-6 navbar-nav  mb-2 mb-lg-0 text-white align-items-center justify-content-end">
+
+
+                        <!-- <li class="nav-item text-white">
+                <a class="nav-link active  text-white" aria-current="page" href="#" style="font-size:20px;"> <i
+                    class="fas fa-shopping-cart"></i></a>
+              </li>
+              <li class="nav-item text-white">
+                <a class="nav-link active  text-white" aria-current="page" href="#" style="font-size:20px;">
+              </li>
+              <i class="fas fa-user-circle" data-bs-toggle="modal" data-bs-target="#modal-form">
+              </i></a> -->
+
+
+                        <!-- Cart =-->
+                        <div style="margin-right: 1.5rem;">
+
+                            <a class="text-white nav-link" href="/payment" style="font-size:1.2rem;">
+                                <span id="CartProduct" class="badge badge-pill bg-danger"></span>
+                                <span><i class="fas fa-shopping-cart"></i></span>
+                            </a>
+                        </div>
+                        <!-- Cart -->
+
+
+
+
+                        <% if(locals.user ){ %>
+                            <div class="btn-group " style="    top: 10px;">
+                                <button class="btn btn-secondary " type="button">
+                                    <a href="/profile/<%=locals.user.id%>" class=" d-sm-flex align-items-sm-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                                            class="rounded-circle" height="18" alt="Black and White Portrait of a Man"
+                                            loading="lazy" />
+                                        <strong class="d-none d-sm-block text-white  " style="font-size:14px;">
+                                            <%= locals.user.firstName %>
+                                        </strong>
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-sm  dropdown-toggle dropdown-toggle-split"
+                                    style="background-color: #686e74;" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Thông tin</a></li>
+                                    <li><a class="dropdown-item" href="#">Thanh Toán</a></li>
+                                    <li><a class="dropdown-item" href="#">Hóa đơn</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li><a href="/logout" class="dropdown-item" href="#">LOG OUT</a></li>
+                                </ul>
+                            </div>
+                            <% } else { %>
+                                <div class="ml-2">
+                                    <a class="text-decoration-none" href="" data-bs-toggle="modal"
+                                        data-bs-target="#modal-form">
+                                        <button type="button"
+                                            class="btn btn-rounded btn-light text-dark me-2 m-0">Login</button>
+                                    </a>
+                                    <a class=" text-decoration-none" href="/signup" data-bs-toggle=" modal"
+                                        data-bs-target="#modal-form">
+                                        <button type="button" class="btn  btn-rounded btn-primary m-0">Sign-up</button>
+                                    </a>
+                                </div>
+                                <% } %>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+</div>
+
+</div>

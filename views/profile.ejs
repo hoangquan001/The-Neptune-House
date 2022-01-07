@@ -1,0 +1,155 @@
+<div class="container">
+    <% if (inforUser) { %>
+        <form method="post" action="/profile/edit/<%= inforUser._id%>"
+            oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+            <h3 class="ml-5">
+                <small class="text-muted">My Profile > </small>
+                Edit Profile
+            </h3>
+            <div class="row h-100" style="min-height:600px">
+                <div class="col-4 h-100">
+                    <div class="card bg-dark " style="width: 18rem; height: 100%;">
+                        <div class="card-body d-flex justify-content-center" style="border-radius: 50%;">
+                            <img src="/uploadphoto/<%=inforUser.Avatar%>" alt="Chicago Skyscrapers"
+                                style=" height:150px; width: 150px; border-radius: 50%; " />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center text-white">
+                                <%= inforUser.HoTen %>
+                            </h5>
+                        </div>
+                        <div class="card-body ">
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example3" name="newname" class="form-control bg-light" />
+                                <label class="form-label" for="form6Example3">
+                                    <%= inforUser.HoTen %>
+                                </label>
+                            </div>
+
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example1" class="form-control bg-light" />
+                                        <label class="form-label" for="form6Example1">
+                                            <%= inforUser.HoTen %>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" class="form-control bg-light" />
+                                        <label class="form-label" for="form6Example2">Lương</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example4" class="form-control bg-light" />
+                                <label class="form-label" for="form6Example4">Ngày Bắt đầu làm việc</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-8 ">
+
+                    <div class="card shadow mb-5 ">
+                        <div class="card-body ">
+
+                            <h3>
+                                <small>Change Infomation </small>
+
+                            </h3>
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <div class="col">
+
+                                    <label>
+                                        Ngày sinh
+
+                                    </label>
+                                    <input type="datetime-local" class="form-control" name="newbirth"
+                                        value="<%= inforUser.NgaySinh%>">
+
+
+                                </div>
+                                <div class="col">
+
+                                    <label>Giới tính</label>
+                                    <select class="form-control" name="newsex" id="exampleFormControlSelect1">
+
+                                        <option <% if(inforUser.GioiTinh=="Nam" ){%> selected <% } %> >Nam</option>
+
+
+                                        <option <% if(inforUser.GioiTinh=="Nữ" ){%> selected <% } %>>Nữ</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+
+                            <!-- Text input -->
+                            <label>Địa chỉ</label>
+                            <div class="form-outline mb-4">
+
+                                <input type="text" id="form6Example4" name="newaddr" class="form-control" />
+                                <label class="form-label" for="form6Example4">
+                                    <%= inforUser.DiaChi %>
+                                </label>
+                            </div>
+
+                            <!-- Email input -->
+                            <label>Số điện thọai</label>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example5" name="newphone" class="form-control" />
+                                <label class="form-label" for="form6Example5">
+                                    <%= inforUser.SDT %>
+                                </label>
+                            </div>
+                            <h3>
+                                <small>Change Password </small>
+
+                            </h3>
+                            <!-- Number input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form6Example5" name="newpass" class="form-control" />
+                                <label class="form-label" required name=up for="form6Example5">New Passwword</label>
+                            </div>
+
+                            <!-- Message input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form6Example6" name="comfirmpass" class="form-control" />
+                                <label class="form-label" name=up2 for="form6Example6">Confirm Password</label>
+                            </div>
+
+                            <!-- Checkbox -->
+
+
+                            <!-- Submit button -->
+                            <div class="d-flex justify-content-end">
+
+                                <button type="submit" class="btn btn-lg mb-4 text-white"
+                                    style="background-color: #FFB800; width:200px; border-radius: 38px;">
+                                    SAVE <i class="far fa-arrow-right"></i></button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </form>
+        <% } %>
+</div>

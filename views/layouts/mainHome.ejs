@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= (typeof title !="neptune house" ? title : "" ) %>
+    </title>
+    <!-- icon -->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <!-- CSS (load bootstrap from a CDN) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="/css/material-dashboard.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- CSS Files -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header') %>
+
+    </header>
+
+
+    <!-- BODY -->
+    <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner mb-4">
+            <div class="carousel-item">
+                <div class="page-header min-vh-75 "
+                    style="background-image: url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80');">
+                    <span class="mask bg-gradient-dark"></span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 my-auto" style="margin-left:50px">
+                                <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Pricing Plans</h4>
+                                <h1 class="text-white fadeIn2 fadeInBottom">Work with the rockets</h1>
+                                <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Wealth creation is an
+                                    evolutionarily recent
+                                    positive-sum game. Status is an old zero-sum game. Those attacking wealth creation
+                                    are often just
+                                    seeking status.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="page-header min-vh-75 "
+                    style="background-image: url('https://images.unsplash.com/photo-1602671784371-042db95df1c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+                    <span class="mask bg-gradient-dark"></span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 my-auto " style="margin-left:50px">
+                                <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Our Team</h4>
+                                <h1 class="text-white fadeIn2 fadeInBottom">Work with the best</h1>
+                                <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">Free people make free choices.
+                                    Free choices mean
+                                    you get unequal outcomes. You can have freedom, or you can have equal outcomes. You
+                                    can’t have both.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="page-header min-vh-75 "
+                    style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
+                    <span class="mask bg-gradient-dark"></span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 my-auto mr-10" style="margin-left:50px">
+                                <h4 class="text-white mb-0 fadeIn1 fadeInBottom">Office Places</h4>
+                                <h1 class="text-white fadeIn2 fadeInBottom">Work from home</h1>
+                                <p class="lead text-white opacity-8 fadeIn3 fadeInBottom">You’re spending time to save
+                                    money when you
+                                    should be spending money to save time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-vh-75 position-absolute w-100 top-0">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+
+            </a>
+        </div>
+    </div>
+
+    <main class="container ">
+
+        <%- body %>
+
+    </main>
+    <!-- BODY -->
+
+
+
+
+    <!-- login -->
+
+
+
+    <!-- Script thanh cuộn trở về đầu trang-->
+
+    <button type="button" class="btn btn-secondary  btn-lg" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        //Get the button
+        let mybutton = document.getElementById("btn-back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+
+    <script src="/js/core/bootstrap.min.js"></script>
+    <script src="/js/core/popper.min.js"></script>
+    <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+    <!-- <script src="/js/material-dashboard.min.js"></script> -->
+    <script src="/js/core/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+
+
+</html>

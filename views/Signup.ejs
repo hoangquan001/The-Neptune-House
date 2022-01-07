@@ -1,0 +1,132 @@
+<div class="container mb-5 d-flex justify-content-center">
+    <div class="card " style="width: 500px;">
+        <div class="card-header">
+
+            <span class="h5 fw-bold mb-0" style="color: rgb(0, 0, 0)">Sign up</span>
+
+        </div>
+        <div class="card-body">
+            <form role="form text-left" method="post" action="/signup"
+                oninput='comfrimpassword.setCustomValidity(comfrimpassword.value != password.value ? "Passwords do not match." : "")'>
+                <label>Họ Tên</label>
+                <div class="input-group">
+                    <label class="form-label" for="formControlDefault">Họ Tên</label>
+                    <input type="text" name="name" class="form-control" id="formControlDefault">
+                </div>
+                <label>Giới tính</label>
+                <div class="input-group ">
+                    <label class="form-label">Giới Tính</label>
+                    <input type="text" name="sex" class="form-control" onfocus="focused(this)"
+                        onfocusout="defocused(this)">
+                </div>
+                <label>Mail</label>
+                <div class="input-group ">
+                    <label class="form-label">Comfrim Password</label>
+                    <input type="email" name="email" class="form-control" onfocus="focused(this)"
+                        onfocusout="defocused(this)">
+                </div>
+                <label>Username</label>
+                <div class="input-group ">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" onfocus="focused(this)"
+                        onfocusout="defocused(this)">
+                </div>
+                <label>Password</label>
+                <div class="input-group ">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" onfocus="focused(this)"
+                        onfocusout="defocused(this)">
+                </div>
+                <label>Comfrim Password</label>
+                <div class="input-group ">
+                    <label class="form-label">Comfrim Password</label>
+                    <input type="password" name="comfrimpassword" class="form-control" onfocus="focused(this)"
+                        onfocusout="defocused(this)">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-round bg-dark w-100 mt-4 mb-0 text-white">Sign
+                        Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-notification-signup" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" onclick="$('#modal-notification-signup').modal('hide')"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-smile-beam fa-3x " style="color: #FEB700"></i>
+
+                    <h4 class="text-gradient text-danger mt-4">Dăng ký thành công!!</h4>
+                    <p>Vui lòng kiểm tra email để xác thực tài khoản
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+
+
+                <button type="button" class="btn text-white ml-auto"
+                    onclick="$('#modal-notification-signup').modal('hide')"
+                    style="width: 200px; background-color:#FEB700;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-notification-signup-failer" tabindex="-1" role="dialog"
+    aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" onclick="$('#modal-notification-signup-failer').modal('hide')"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-smile-beam fa-3x " style="color: #FEB700"></i>
+
+                    <h4 class="text-gradient text-danger mt-4">Tên đăng nhập đã tồn tại!!</h4>
+                    <p>Vui lòng kiểm chọn tài khoản khác để đăng ký
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+
+
+                <button type="button" class="btn text-white ml-auto"
+                    onclick="$('#modal-notification-signup-failer').modal('hide')"
+                    style="width: 200px; background-color:#FEB700;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% if (locals.message) if (message==='signupfailer' ) { %>
+    <script>
+
+        $("#modal-notification-signup-failer").modal('show');
+    </script>
+    <% } %>
+
+
+        <% if (locals.message) if (message==='signupsuccess' ) { %>
+            <script>
+
+                $("#modal-notification-signup").modal('show');
+            </script>
+            <% } %>

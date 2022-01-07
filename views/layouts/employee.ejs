@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    <%= (typeof title !="nepturn house" ? title : "" ) %>
+  </title>
+  <!-- icon -->
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <!-- CSS (load bootstrap from a CDN) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/css/material-dashboard.css" rel="stylesheet" />
+
+  <!-- Nucleo Icons -->
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!-- CSS Files -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+  <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <header>
+    <%- include('../partials/employeeHeader'); %>
+  </header>
+
+  <!-- BODY -->
+  <main class="container" style=" min-height: 80vh;">
+
+    <%- body %>
+
+  </main>
+  <!-- BODY -->
+
+
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  <script src="/js/core/bootstrap.min.js"></script>
+  <script src="/js/core/popper.min.js"></script>
+  <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- <script src="/js/material-dashboard.min.js"></script> -->
+  <script src="/js/core/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+<!-- JavaScript Bundle with Popper -->
+
+
+</html>
