@@ -17,7 +17,7 @@ mongodb.connect()
 // const tkad = require('./models/TaiKhoan_Admin');
 
 // const newad = new tkad({ TenDangNhap: 'admin', MatKhau: '$2a$12$oVwoit5ssp.nqftqqmVu3OXWJs3hM86w8XiIwuklHkAkRH9qqw3yi' })
-// newad.save()
+
 //Config
 app.use(express.json());
 app.use(
