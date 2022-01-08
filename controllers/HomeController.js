@@ -23,7 +23,7 @@ class HomeController {
         res.redirect("/home")
     }
 
-
+//Home commit
     async getLogin(req, res, next) {
 
         pport.authenticate('local-signin', {
