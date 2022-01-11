@@ -164,5 +164,5 @@ color: #0486FD;
 }
 
 .rating:hover>input:checked~label:before {
-  opacity: 0.4
+  opacity: 0.5
 }
