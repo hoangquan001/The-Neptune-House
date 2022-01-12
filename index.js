@@ -14,7 +14,7 @@ require('./config/middlewares/session')(app);
 
 //DataBase connect
 mongodb.connect()
-
+//add view and controllers employee
 
 // const tkad = require('./models/TaiKhoan_Admin');
 
