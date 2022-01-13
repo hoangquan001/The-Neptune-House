@@ -29,7 +29,6 @@ class PaymentController {
         })
         next()
     }
-
     async Order(req, res) {
         // console.log(req.body)
         let TongTien = 0

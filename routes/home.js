@@ -4,7 +4,7 @@ const HomeRouter = express.Router();
 
 
 //YOUR CODE HERE
-
+//new 
 HomeRouter.get('/search', HomeController.Search);
 HomeRouter.get('/home', HomeController.index);
 
