@@ -69,6 +69,8 @@ class ProfileController {
             .then(data => {
                 req.session.user = data
             })
+
+            //121212
         await changeAcc_M.findByIdAndUpdate(req.user._id, newacc)
         await infoUser_M.findByIdAndUpdate(IdEdit, newdata)
         res.redirect(`/profile/${IdEdit}`)
