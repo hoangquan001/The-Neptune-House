@@ -12,6 +12,7 @@ class userProfile {
         this.username = "Admin"
         this.emails = "nepturn111@gmail.com"
         this.gender = "Nam"
+        //
 
     }
     async setData(user, role) {

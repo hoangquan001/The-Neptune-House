@@ -14,7 +14,7 @@ class ProfileController {
             inforUser: data, title: 'Change Information User',
             layout: "layouts/main",
         })
-
+        //
     }
     async editInfo(req, res) {
 
