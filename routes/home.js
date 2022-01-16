@@ -13,7 +13,7 @@ HomeRouter.get('/', HomeController.home);
 
 HomeRouter.post('/', HomeController.getLogin);
 HomeRouter.post('/addCart', HomeController.addCart);
-//END
+//END//
 
 
 module.exports = HomeRouter;

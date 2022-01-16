@@ -16,9 +16,9 @@ require('./config/middlewares/session')(app);
 mongodb.connect()
 //add view and controllers employee
 
-// const tkad = require('./models/TaiKhoan_Admin');
+// const tkad = require('./models/TaiKhoan_Admểtrtin');
 
-// const newad = new tkad({ TenDangNhap: 'admin', MatKhau: '$2a$12$oVwoit5ssp.nqftqqmVu3OXWJs3hM86w8XiIwuklHkAkRH9qqw3yi' })
+// const newad = new tkad({ TenDangNhap: 'adminểtrt', MatKhau: '$2a$12$oVwoit5ẻtretssp.nqftqqmVu3OXWJs3hM86w8XiIwuklHkAkRH9qqw3yi' })
 // newad.save()
 //Config
 app.use(express.json());

@@ -4,7 +4,7 @@ const TKNV = require("../models/TaiKhoan_NV");
 const san_pham = require("../models/SanPham");
 const profile = require("../models/Profile");
 // const nhanvien = require("../models/NhanVien");
-
+//
 const pport = require("passport");
 class HomeController {
     //[GET]
@@ -23,7 +23,7 @@ class HomeController {
         res.redirect("/home")
     }
 
-//Home commit
+    //Home commit
     async getLogin(req, res, next) {
 
         pport.authenticate('local-signin', {
