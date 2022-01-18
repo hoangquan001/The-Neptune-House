@@ -27,24 +27,34 @@
           mt-sm-5
           flex-column
         ">
-        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
-          <div class="d-flex align-items-center" style="min-width: 90px">
-            <img src="/img/admin/clarity_employee-solid.png" width="15px" height="15px" alt="first icon" />
-            <div style="margin-left: 8px">Employee</div>
-          </div>
-        </button>
-        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
-          <div class="d-flex align-items-center" style="min-width: 90px">
-            <img src="/img/admin/Vector.png" width="15px" height="15px" alt="first icon" />
-            <div style="margin-left: 8px">Website</div>
-          </div>
-        </button>
-        <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
-          <div class="d-flex align-items-center" style="min-width: 90px">
-            <img src="/img/admin/card.png" width="15px" height="15px" alt="first icon" />
-            <div style="margin-left: 8px">Website</div>
-          </div>
-        </button>
+
+        <a href="/admin/staff">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/clarity_employee-solid.png" width="15px" height="15px" alt="first icon" />
+
+              <div style="margin-left: 8px">Employee</div>
+
+            </div>
+          </button>
+        </a>
+        <a href="/admin/product">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/Vector.png" width="15px" height="15px" alt="first icon" />
+
+              <div style="margin-left: 8px">Product</div>
+
+            </div>
+          </button></a>
+        <a href="/">
+          <button type="button" style="min-width: 95px; text-transform: capitalize" class="btn btn-secondary btn-block">
+            <div class="d-flex align-items-center" style="min-width: 90px">
+              <img src="/img/admin/card.png" width="15px" height="15px" alt="first icon" />
+              <div style="margin-left: 8px">Website</div>
+            </div>
+          </button>
+        </a>
       </div>
 
       <div class="
@@ -187,90 +197,123 @@
             <% } %>
 
 
-              <div class="d-flex container flex-row-reverse align-items-center p-sm-5">
-                <i class="far fa-caret-square-right ms-sm-4 fs-3"></i>
-                <i class="far fa-caret-square-left fs-3"></i>
+              <% if(numPage!=0) { %>
+                <div class="col-sm d-flex justify-content-center mt-5">
+                  <nav aria-label="Page navigation example mt-3">
+                    <ul class="pagination">
+                      <% const pre=curPage <=1 ? curPage:curPage-1; const next=curPage>= numPage ? curPage:
+                        parseInt(curPage) + 1
+                        %>
+                        <li class="page-item">
+                          <a class="page-link" href="?page=<%=pre%>" aria-label="Previous">
+                            <span class="material-icons">
+                              keyboard_arrow_left
+                            </span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
 
-              </div>
+                        <% for(var i=1; i <=numPage; i++) { var active="" ; if(i==curPage) active="active" ; %>
 
+                          <li class="page-item <%=active%>">
+                            <a class="page-link" href="?page=<%=i%>">
+                              <%=i%>
+                            </a>
+                          </li>
 
+                          <% } %>
 
-
+                            <li class="page-item">
+                              <a class="page-link" href="?page=<%=next%>" aria-label="Next">
+                                <span class="material-icons">
+                                  keyboard_arrow_right
+                                </span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </li>
+                    </ul>
+                  </nav>
+                </div>
         </div>
+        <% } %>
+
+
+
       </div>
   </div>
-  <!-- New staffs-->
+</div>
+<!-- New staffs-->
 
-  <div class="col-md-4">
+<div class="col-md-4">
 
-    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="width: 700px;">
-        <div class="modal-content " style="width:500px;">
-          <div class="modal-body " style="width:500px;">
-            <div class="card card-plain">
-              <div class="card-header pb-0 text-left">
-                <h5 class="">Add New Employee</h5>
-
-              </div>
-              <div class="card-body">
-                <form id="formAction" role="form text-left" method="post" action="/admin/staff">
-                  <div class="input-group input-group-static mb-4">
-                    <label>Họ Tên Nhân Viên</label>
-                    <input type="text" name="Name" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static my-3">
-                    <label>Ngày sinh</label>
-                    <input type="datetime-local" name="birth" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static mb-4">
-                    <label>Địa chỉ</label>
-                    <input type="text" name="Address" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static mb-4">
-                    <label>Số điện thoại</label>
-                    <input type="text" name="PhoneNumber" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static mb-4">
-                    <label>Loại nhân viên</label>
-                    <input type="text" name="Position" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static mb-4">
-                    <label>Mức Lương </label>
-                    <input type="text" name="Salary" class="form-control">
-                  </div>
-                  <div class="input-group input-group-static my-3">
-                    <label>Ngày bắt đầu</label>
-                    <input type="datetime-local" name="dateStart" class="form-control">
-                  </div>
-
-
-
-                </form>
-
-                <div class="input-group input-group-static my-3">
-                  <label>Chọn Hình Ảnh</label>
-
-                  <input type="file" id="addInput" name="myImage" accept="image/*">
-
-                </div>
-
-                <div class="text-center">
-                  <button type="button" onclick="submitForms('#addInput','#formAction')"
-                    class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0 clicked_only_time">
-                    Add
-                    new
-                  </button>
-                </div>
-
-
-              </div>
+  <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="width: 700px;">
+      <div class="modal-content " style="width:500px;">
+        <div class="modal-body " style="width:500px;">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+              <h5 class="">Add New Employee</h5>
 
             </div>
+            <div class="card-body">
+              <form id="formAction" role="form text-left" method="post" action="/admin/staff">
+                <div class="input-group input-group-static mb-4">
+                  <label>Họ Tên Nhân Viên</label>
+                  <input type="text" name="Name" class="form-control">
+                </div>
+                <div class="input-group input-group-static my-3">
+                  <label>Ngày sinh</label>
+                  <input type="datetime-local" name="birth" class="form-control">
+                </div>
+                <div class="input-group input-group-static mb-4">
+                  <label>Địa chỉ</label>
+                  <input type="text" name="Address" class="form-control">
+                </div>
+                <div class="input-group input-group-static mb-4">
+                  <label>Số điện thoại</label>
+                  <input type="text" name="PhoneNumber" class="form-control">
+                </div>
+                <div class="input-group input-group-static mb-4">
+                  <label>Loại nhân viên</label>
+                  <input type="text" name="Position" class="form-control">
+                </div>
+                <div class="input-group input-group-static mb-4">
+                  <label>Mức Lương </label>
+                  <input type="text" name="Salary" class="form-control">
+                </div>
+                <div class="input-group input-group-static my-3">
+                  <label>Ngày bắt đầu</label>
+                  <input type="datetime-local" name="dateStart" class="form-control">
+                </div>
+
+
+
+              </form>
+
+              <div class="input-group input-group-static my-3">
+                <label>Chọn Hình Ảnh</label>
+
+                <input type="file" id="addInput" name="myImage" accept="image/*">
+
+              </div>
+
+              <div class="text-center">
+                <button type="button" onclick="submitForms('#addInput','#formAction')"
+                  class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0 clicked_only_time">
+                  Add
+                  new
+                </button>
+              </div>
+
+
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-- view -->
 

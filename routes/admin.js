@@ -2,7 +2,7 @@ const express = require("express");
 const adminController = require("../controllers/adminController");
 const adminRouter = express.Router();
 
-//YOUR CODE HERE//
+//YOUR CODE HERE
 
 adminRouter.get("/staff/delete/:id", adminController.deleteStaff)
 adminRouter.post("/staff/edit/:id", adminController.editStaff)

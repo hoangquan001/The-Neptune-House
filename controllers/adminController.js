@@ -3,16 +3,31 @@ const Products_M = require("../models/SanPham");
 const Staff_M = require("../models/NhanVien");
 const Detail_M = require("../models/CTHoaDon");
 class AdminController {
-  //Admin controller
+
   //Quan lý nhân viên
   //[GET]
   async staff(req, res) {
-
+    let page = 1
+    const item_per_page = 5
+    if (req.query.page) {
+      page = req.query.page
+      page = page < 1 ? page + 1 : page
+    }
 
     const allemployee = await Staff_M.find({})
+      .skip((page - 1) * item_per_page)
+      .limit(item_per_page)
+
+    let numPage = parseInt((await Staff_M.find({})).length) / item_per_page
+    numPage = numPage - parseInt(numPage) === 0 ? numPage : numPage + 1
+
+
+
     res.render('Staff', {
       staffs: allemployee, title: 'Manage Products',
       layout: "layouts/staff",
+      numPage: numPage,
+      curPage: page
     })
   }
 
@@ -99,11 +114,28 @@ class AdminController {
 
   //xư lý yêu cầu về sản phẩm
   async products(req, res) {
+    let page = 1
+    const item_per_page = 8
+    if (req.query.page) {
+      page = req.query.page
+      page = page < 1 ? page + 1 : page
+    }
+
     const allpro = await Products_M.find({})
+      .skip((page - 1) * item_per_page)
+      .limit(item_per_page)
+
+    let numPage = parseInt((await Products_M.find({})).length) / item_per_page
+    numPage = numPage - parseInt(numPage) === 0 ? numPage : numPage + 1
+
+
     res.render('Admin', {
       products: allpro,
       title: 'Manage Products',
       layout: "layouts/admin",
+      numPage: numPage,
+      curPage: page
+
     })
   }
   async deletepro(req, res) {

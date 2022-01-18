@@ -51,7 +51,7 @@
 #btn-back-to-top {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     display: none;
   }
 
@@ -164,5 +164,5 @@ color: #0486FD;
 }
 
 .rating:hover>input:checked~label:before {
-  opacity: 0.5
+  opacity: 0.4
 }

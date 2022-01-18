@@ -7,6 +7,5 @@ const CommentSchema = new Schema({
     MaSP: { type: mongoose.SchemaTypes.ObjectId, ref: "SanPham" },
     MaKH: { type: mongoose.SchemaTypes.ObjectId, ref: "KhachHang" },
 });
-//Them model comment
+
 module.exports = mongoose.model("Comment", CommentSchema);
-//

@@ -17,28 +17,28 @@
 
                 </li>
                 <li>
-                    Chờ Duyệt
+                    <!-- Chờ Duyệt -->
+                    Đã hủy
                     <img src="img/employee/ci_label3.png" alt="">
 
                 </li>
             </ul>
         </div>
 
-        <div class="" style="box-shadow: 5px 4px 14px 12px rgba(0, 0, 0, 0.15);
+        <div class="d-flex flex-wrap align-content-between" style="box-shadow: 5px 4px 14px 12px rgba(0, 0, 0, 0.15);  min-height: 686px;
 border-radius: 34px;">
             <div class="container d-flex flex-column h-100">
 
                 <!---
     bắt đầu khung thông tin đơn dặt hàng của khách hàng
 -->
-                <% for(var i=0; i < orders.length; i++) {%>
+
+                <% for(var i=0; i < orders.length; i++) if (orders[i].DonHang.MaKH ){%>
 
                     <div class=" row d-flex align-items-center justify-content-between m-sm-3" style="
 border: 2px solid #BEBEBE;">
                         <div class="col-sm-6 d-flex align-items-center p-sm-2">
-                            <img src=<%=orders[i].DonHang.MaKH.Avatar %> width="83" height="83" style="border-radius:
-                            50%;"
-                            alt="">
+
                             <div class="d-flex flex-column ms-sm-3">
                                 <h4 class="fw-bold">
                                     <%=orders[i].DonHang.MaKH.HoTen %>
@@ -50,16 +50,16 @@ border: 2px solid #BEBEBE;">
                         </div>
 
                         <div class="col-sm-6 d-flex align-items-center justify-content-around" style="cursor: pointer;">
-                            <div data-bs-toggle="modal" data-bs-target="#modal-notification" class="text-danger"
+                            <div data-bs-toggle="modal" data-bs-target="#modal-notification<%=i%>" class="text-danger"
                                 style="text-transform: capitalize;">
 
-                                <% if (orders[i].DonHang.TinhTrangDonHang==="Đã Giao" ) { %>
+                                <% if (orders[i].DonHang.TinhTrangDonHang==="Đã giao" ) { %>
                                     <div class="text-success">
                                         <%=orders[i].DonHang.TinhTrangDonHang %>
                                             <i class="far fa-check-circle"></i>
                                     </div>
                                     <%} else { %>
-                                        <% if (orders[i].DonHang.TinhTrangDonHang==="Đang Giao" ) { %>
+                                        <% if (orders[i].DonHang.TinhTrangDonHang==="Đang giao" ) { %>
                                             <div class="text-warning">
                                                 <%=orders[i].DonHang.TinhTrangDonHang %>
                                                     <i class="fas fa-spinner"></i>
@@ -93,23 +93,49 @@ border: 2px solid #BEBEBE;">
                 
                     Bắt đầu khung thông tin chi tiết sp khách hàng
                 -->
-                 <!--
-                
-                    Bắt đầu khung thông tin chi tiết sp khách hàng
-                -->
-
 
 
                         <!-- End thong tin khach hang 4-->
 
-                        <div class="d-flex container justify-content-center align-items-center pb-sm-5">
-                            <i class="far fa-caret-square-left fs-3"></i>
-                            <i class="far fa-caret-square-right ms-sm-4 fs-3"></i>
-                        </div>
 
 
             </div>
+            <div class="col-sm d-flex justify-content-center mt-5">
+                <nav aria-label="Page navigation example mt-3">
+                    <ul class="pagination">
+                        <% const pre=curPage <=1 ? curPage:curPage-1; const next=curPage>= numPage ?
+                            curPage: parseInt(curPage) + 1
+                            %>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<%=pre%>" aria-label="Previous">
+                                    <span class="material-icons">
+                                        keyboard_arrow_left
+                                    </span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
 
+                            <% for(var i=1; i <=numPage; i++) { var active="" ; if(i==curPage) active="active" ; %>
+
+                                <li class="page-item <%=active%>">
+                                    <a class="page-link" href="?page=<%=i%>">
+                                        <%=i%>
+                                    </a>
+                                </li>
+
+                                <% } %>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<%=next%>" aria-label="Next">
+                                            <span class="material-icons">
+                                                keyboard_arrow_right
+                                            </span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
     </div>
@@ -130,6 +156,7 @@ border: 2px solid #BEBEBE;">
                 </div>
             </div>
             <div class="container d-flex flex-column" style="background: #F8F8F8;
+          
 border: 1px solid #FFFFFF;
 box-sizing: border-box;
 box-shadow: 5px 4px 11px 13px rgba(0, 0, 0, 0.12);
@@ -153,9 +180,6 @@ border-radius: 33px;">
                         </p>
                     </div>
 
-                    <img src=<%=orders[i].DonHang.MaKH.Avatar %> width="92" height="92" style="border-radius:50%;"
-                    alt="">
-
                 </div>
                 <!-- End of customer bill-->
                 <!---------------------------------------------------------------------------------->
@@ -169,7 +193,7 @@ border-radius: 33px;">
 
                             <div class="d-flex m-sm-3">
                                 <img src="/uploadphoto/<%=orders[i].DeTail[j].MaSP.Image %>" class="img-fluid"
-                                    width="85" height="62" style="border-radius: 50%;" alt="">
+                                    width="95" height="62" style="border-radius: 50%;" alt="">
                                 <div class="d-flex flex-column ms-sm-4">
                                     <div id="productName">
                                         <h3 class="fw-bold">
@@ -208,9 +232,11 @@ border-radius: 33px;">
                                 style="text-transform: capitalize; text-decoration: underline;">
                                 Reject</div>
                         </a>
-                        <button type="button" class="btn btn-outline-success fw-bold">Confirm
-                            <i class="fas fa-check"></i>
-                        </button>
+                        <a href="/employee/confirm/<%=orders[i].DonHang._id %>">
+                            <button type="button" class="btn btn-outline-success fw-bold">Confirm
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -220,8 +246,8 @@ border-radius: 33px;">
         </div>
 
 
-        <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
-            aria-hidden="true">
+        <div class="modal fade" id="modal-notification<%=i%>" tabindex="-1" role="dialog"
+            aria-labelledby="modal-notification" aria-hidden="true">
             <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                 <div class="modal-content">
                     <form method="post" action="/employee/editStatus/<%=orders[i].DonHang._id %>">
@@ -274,7 +300,7 @@ border-radius: 33px;">
 
 </div>
 
-<!-- 
+
 <script>
     function ShowHide(id) {
         var x = document.getElementById(id + "detail");
@@ -285,4 +311,4 @@ border-radius: 33px;">
         }
     }
 
-</script> -->
+</script>

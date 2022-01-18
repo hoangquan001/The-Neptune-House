@@ -7,7 +7,7 @@
 
 
         <div class="col-2 d-flex align-items-center">
-          <a aria-current="page" href="/home">
+          <a aria-current="page" href="/home" style="text-decoration: none;">
             <div class="icon p-3 img-fluid "
               style="background-color: #786C65; border-radius:50%; height:100px; width:100px;   ">
 
@@ -28,16 +28,14 @@
 
 
               <li class="nav-item text-white mx-1">
-                <a class="nav-link active  text-white" aria-current="page" href="/home"> HOME</a>
+                <a class="nav-link active  text-white" aria-current="page" href="/home"> TRANG CHỦ</a>
               </li>
-              <li class="nav-item text-white  mx-1">
-                <a class="nav-link active  text-white" aria-current="page" href="/#"> KHUYẾN MÃI</a>
-              </li>
+
               <li class="nav-item text-white  mx-1">
                 <a class="nav-link active  text-white" aria-current="page" href="/#Listproduct">SẢN PHẨM</a>
               </li>
               <li class="nav-item text-white  mx-1">
-                <a class="nav-link active  text-white" aria-current="page" href="/#infoFotter"> ABOUT US</a>
+                <a class="nav-link active  text-white" aria-current="page" href="#infoFotter"> VỀ CHÚNG TÔI</a>
               </li>
 
 
@@ -87,20 +85,32 @@
                     <span class="visually-hidden">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/profile/<%=locals.user.id%>">Thông tin</a></li>
-                    <li><a class="dropdown-item" href="#">Thanh Toán</a></li>
-                    <li><a class="dropdown-item" href="#">Hóa đơn</a></li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li><a href="/logout" class="dropdown-item">LOG OUT <i class="far fa-sign-out"></i></a>
-                    </li>
+                    <% if(locals.role==="admin" ) { %>
+                      <li><a class="dropdown-item" href="/admin">Trang quản lý </a></li>
+                      <% } %>
+                        <% if(locals.role==="staff" ) { %>
+                          <li><a class="dropdown-item" href="/profile/<%=locals.user.id%>">Trang nhân viên</a></li>
+
+                          </li>
+                          <% } %>
+
+                            <% if(locals.role==="customer" ) { %>
+
+                              <li><a class="dropdown-item" href="/profile/<%=locals.user.id%>">Trang cá nhân</a></li>
+                              <li><a class="dropdown-item" href="#">Hóa đơn</a></li>
+                              <% } %>
+
+                                <li>
+                                  <hr class="dropdown-divider" />
+                                </li>
+
+                                <li><a href="/logout" class="dropdown-item">LOG OUT <i class="far fa-sign-out"></i></a>
                   </ul>
                 </div>
                 <% } else { %>
                   <div class=" text-white" style="margin-left: 1.5rem;">
                     <a data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Sign in" data-bs-toggle="modal"
-                      data-bs-target="#modal-form">
+                      data-bs-target="#modal-form-login">
                       <button type="button" class="btn btn-outline-light m-0 p-1" style="font-size: 14px;"> Sign
                         in</button>
                     </a>

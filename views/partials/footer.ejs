@@ -1,153 +1,25 @@
+<script>
+    window.addEventListener("pageshow", function (event) {
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Handle page restore.
+            window.location.reload();
+        }
+    });
+
+</script>
+
+
 <% if (locals.login ) { %>
     <script>
-        $('#modal-form').modal('show');
+        $('#modal-form-login').modal('show');
     </script>
     <% } %>
-        <script>
-
-            var test = '<%-JSON.stringify(cart) %>';
-            var cart = JSON.parse(test)
-            var number = parseInt(cart.TongSoLuongSp)
-            var element = document.querySelector("#CartProduct")
-            // window.onload = function () {
-            if (element) {
-                element.textContent = number;
-
-            }
-            // }
-            function addToCard(id, GiaBan) {
-
-                $("#toast").toast({
-                    delay: 2000,
-                });
-                $("#toast").toast('show')
-
-                GiaBan = parseInt(GiaBan)
-                number++;
-                element.textContent = number;
-                cart.TongSoLuongSp = number;
-
-                let flag = true
-                for (let i = 0; i < cart.items.length; i++) {
-                    if (cart.items[i].MaSP === id) {
-                        cart.items[i].SoLuong = parseInt(cart.items[i].SoLuong) + 1;
-                        cart.items[i].TongTien = cart.items[i].SoLuong * GiaBan
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag) {
-                    cart.items.push({
-                        SoLuong: 1,
-                        MaSP: id,
-                        TongTien: GiaBan
-                    })
-                }
-                fetch('/addCart', {
-                    method: 'POST', // or 'PUT'
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(cart),
-                })
-                    .then(response => response.json())
-                    .then(d => {
-                    })
-            }
 
 
-            var elementTongTien = document.getElementById('TongTienThanhToan')
-            var TongTien = parseInt('<%-locals.TongTien%>')
-            changeQuantity = function (id, GiaBan) {
-                var quantity = document.getElementById('quantity' + id);
-                var num = document.getElementById('number' + id);
-                var price = document.getElementById('price' + id);
-                let du = 0;
-                for (let i = 0; i < cart.items.length; i++) {
-                    if (cart.items[i].MaSP === id) {
-                        du = quantity.value - cart.items[i].SoLuong;
-                        cart.items[i].SoLuong = quantity.value
-                        cart.items[i].TongTien = quantity.value * GiaBan
-                        price.textContent = (parseInt(GiaBan) * quantity.value) + 'đ'
 
-                        break;
-                    }
-                }
-                TongTien += du * GiaBan
-                number += du
-                element.textContent = number
-                num.textContent = 'x' + quantity.value
-                cart.TongSoLuongSp = number;
-                elementTongTien.textContent = TongTien + 'đ'
-                fetch('/addCart', {
-                    method: 'POST', // or 'PUT'
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(cart),
-                })
-                    .then(response => response.json())
-                    .then(d => {
-                    })
-            }
-
-            if (number === 0) {
-                document.getElementById("BtnDatHang").classList.add("disabled");
-            } else {
-                document.getElementById("BtnDatHang").classList.remove("disabled");
-            }
-
-            removeCart = function (id, GiaBan) {
-
-
-                var ele = document.getElementById(id);
-                var quantity = document.getElementById('quantity' + id);
-                var bill = document.getElementById('bill' + id);
-                var element = document.querySelector("#CartProduct")
-                var valdelete = 0;
-                for (let i = 0; i < cart.items.length; i++) {
-                    if (cart.items[i].MaSP === id) {
-                        TongTien -= cart.items[i].SoLuong * GiaBan
-                        cart.items.splice(i, 1)
-                        break;
-                    }
-
-                }
-                elementTongTien.textContent = TongTien
-                number -= quantity.value
-                element.textContent = number
-                cart.TongSoLuongSp = number;
-                ele.remove();
-                bill.remove()
-                fetch('/addCart', {
-                    method: 'POST', // or 'PUT'
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(cart),
-                })
-                    .then(response => response.json())
-                    .then(d => {
-                    })
-                if (number === 0) {
-                    document.getElementById("BtnDatHang").classList.add("disabled");
-                } else {
-                    document.getElementById("BtnDatHang").classList.remove("disabled");
-                }
-            }
-
-            window.addEventListener("pageshow", function (event) {
-                var historyTraversal = event.persisted ||
-                    (typeof window.performance != "undefined" &&
-                        window.performance.navigation.type === 2);
-                if (historyTraversal) {
-                    // Handle page restore.
-                    window.location.reload();
-                }
-            });
-
-
-        </script>
 
         <div class=" text-white pt-5 bg-gradient-dark" id="infoFotter">
             <!-- Grid container -->
@@ -160,10 +32,15 @@
                             <h3 class="text-white">CONTACT US</h3>
                         </div>
                         <div>
-                            19191239123219
+                            <i class="far fa-phone-square text-white"> 09129929929</i>
+
                         </div>
                         <div>
-                            neptune111@gmail.com
+                            <i class="far fa-envelope text-white"> theneptunehouse111@gmail.com</i>
+                        </div>
+                        <div>
+                            <i class="fal fa-map-marker-alt text-white"> Trường ĐH KHTN, TP-HCM</i>
+
                         </div>
                     </div>
                     <!-- end COlumn 1 -->

@@ -79,7 +79,8 @@ class PaymentController {
                 pass: "theneptune111"
             }
         })
-        const data = await ejs.renderFile("views/partials/OderMail.ejs", { TongTien: TongTien, List: List })
+
+        const data = await ejs.renderFile("views/partials/OderMail.ejs", { TongTien: TongTien, List: List, })
         var mainOptions = {
             from: "The Neptune House",
             to: req.body.Email,

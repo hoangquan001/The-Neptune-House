@@ -13,31 +13,25 @@ AdminRouteProtect = function (req, res, next) {
     if (req.session.role === 'admin') {
         next();
     } else {
-        res.redirect('back');
+        res.render('notfound404', { layout: './layouts/staff', title: 'Not Found' })
     }
 }
 EnployeeRouteProtect = function (req, res, next) {
     if (req.session.role === 'staff') {
         next();
     } else {
-        res.redirect('back');
+        res.render('notfound404', { layout: './layouts/staff', title: 'Not Found' })
     }
 }
 
-CustomerRouteProtect = function (req, res, next) {
-    if (req.session.role === 'customer') {
-        next();
-    } else {
-        res.redirect('back');
-    }
-}
+
 function route(app) {
     //YOUR CODE HERE
     app.use('/profile', changeInforRouter)
     app.use('/detail', detailRoute)
-    app.use('/payment', CustomerRouteProtect, paymentRoute)
-    app.use('/admin', AdminRouteProtect, adminRouter)
-    app.use('/employee', EnployeeRouteProtect, employeeRouter)
+    app.use('/payment', paymentRoute)
+    app.use('/admin', adminRouter)
+    app.use('/employee', employeeRouter)
     app.use('/signup', signupRouter)
     app.use('/', HomeRouter)
 

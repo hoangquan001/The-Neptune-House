@@ -7,13 +7,11 @@ const HomeRouter = express.Router();
 
 HomeRouter.get('/search', HomeController.Search);
 HomeRouter.get('/home', HomeController.index);
-
 HomeRouter.get('/logout', HomeController.getLogout);
 HomeRouter.get('/', HomeController.home);
-
 HomeRouter.post('/', HomeController.getLogin);
 HomeRouter.post('/addCart', HomeController.addCart);
-//END//
+//END
 
 
 module.exports = HomeRouter;

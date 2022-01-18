@@ -7,8 +7,8 @@ const employeeRouter = express.Router();
 employeeRouter.get("/statistical", employeeController.statistical)
 employeeRouter.post("/editStatus/:slug", employeeController.editOrder)
 employeeRouter.get("/delete/:id", employeeController.deleteOrder)
+employeeRouter.get("/confirm/:id", employeeController.confirmOrder)
 employeeRouter.get("/", employeeController.employee);
-
 //END
 
 module.exports = employeeRouter;

@@ -35,12 +35,13 @@ class SignupController {
                     pass: "theneptune111"
                 }
             })
-            const data = await ejs.renderFile("views/partials/verifymail.ejs", { username: req.body.username })
+            var fullUrl = 'https://the-neptune-house.herokuapp.com/signup/' + req.body.username;
+            console.log(fullUrl)
+            const data = await ejs.renderFile("views/partials/verifymail.ejs", { url: fullUrl })
             var mainOptions = {
                 from: "The Neptune House",
                 to: req.body.email,
                 subject: "Kích hoạt tài khoản",
-                text: "text",
                 html: data
 
             };

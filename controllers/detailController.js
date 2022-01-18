@@ -1,7 +1,10 @@
 const san_pham = require("../models/SanPham");
 const comment = require("../models/Comment")
 class DetailController {
-    
+    //[GET]
+    // index(req, res) {
+    //     res.redirect('detail/61cb43ad9a3007dd03f8363d')
+    // }
     async productDetai(req, res, next) {
 
         const _id = req.params.slug

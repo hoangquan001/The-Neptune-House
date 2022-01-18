@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-//add model mới
+
 const KhachHang_Schema = new mongoose.Schema({
   HoTen: { type: String, require: true },
   GioiTinh: { type: String, enum: ["Nam", "Nữ"], require: true },

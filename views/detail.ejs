@@ -1,17 +1,14 @@
 <h3 class="mt-5 mb-5"> <span class="text-muted ">Products ></span> Details</h3>
 
-
-
-
 <div class="container d-flex justify-content-center">
 
     <% if(typeof data){ %>
         <div class="card mb-5 " style="min-width: 65%;border-radius:10px;">
             <div class="row g-0">
-                <div class="col-md-4 mt-3 ">
+                <div class="col-md-4 mt-3 d-flex align-items-center">
                     <img src="/uploadphoto/<%=data.Image %>" class="img-fluid " alt="..."
                         style="max-height:260px;max-width:230px; border-radius:30px; margin-left: 5px;">
-                    <p> This is a wider card with supporting </p>
+
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -138,7 +135,7 @@
             <div class="card p-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="user d-flex flex-row align-items-center"> <img
-                            src="/uploadphoto/<%=Comments[i].MaKH.Avatar%>" width="30"
+                            src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" width="30"
                             class="user-img rounded-circle mr-2">
                         <span class="font-weight-bold color-primary">
                             <%=Comments[i].MaKH.HoTen %>
@@ -210,3 +207,96 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    var test = '<%-JSON.stringify(cart) %>';
+    var cart = JSON.parse(test)
+    var number = parseInt(cart.TongSoLuongSp)
+    var element = document.querySelector("#CartProduct")
+    // window.onload = function () {
+    if (element) {
+        element.textContent = number;
+
+    }
+    // }
+    function addToCard(id, GiaBan) {
+
+        $("#toast").toast({
+            delay: 2000,
+        });
+        $("#toast").toast('show')
+
+        GiaBan = parseInt(GiaBan)
+        number++;
+        element.textContent = number;
+        cart.TongSoLuongSp = number;
+
+        let flag = true
+        for (let i = 0; i < cart.items.length; i++) {
+            if (cart.items[i].MaSP === id) {
+                cart.items[i].SoLuong = parseInt(cart.items[i].SoLuong) + 1;
+                cart.items[i].TongTien = cart.items[i].SoLuong * GiaBan
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            cart.items.push({
+                SoLuong: 1,
+                MaSP: id,
+                TongTien: GiaBan
+            })
+        }
+        fetch('/addCart', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cart),
+        })
+            .then(response => response.json())
+            .then(d => {
+            })
+    }
+
+
+    var elementTongTien = document.getElementById('TongTienThanhToan')
+    var TongTien = parseInt('<%-locals.TongTien%>')
+    changeQuantity = function (id, GiaBan) {
+        var quantity = document.getElementById('quantity' + id);
+        var num = document.getElementById('number' + id);
+        var price = document.getElementById('price' + id);
+        let du = 0;
+        for (let i = 0; i < cart.items.length; i++) {
+            if (cart.items[i].MaSP === id) {
+                du = quantity.value - cart.items[i].SoLuong;
+                cart.items[i].SoLuong = quantity.value
+                cart.items[i].TongTien = quantity.value * GiaBan
+                price.textContent = (parseInt(GiaBan) * quantity.value) + 'đ'
+
+                break;
+            }
+        }
+        TongTien += du * GiaBan
+        number += du
+        element.textContent = number
+        num.textContent = 'x' + quantity.value
+        cart.TongSoLuongSp = number;
+        elementTongTien.textContent = TongTien + 'đ'
+        fetch('/addCart', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cart),
+        })
+            .then(response => response.json())
+            .then(d => {
+            })
+    }
+
+
+
+
+</script>

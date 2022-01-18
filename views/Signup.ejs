@@ -89,9 +89,8 @@
     <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
         <div class="modal-content">
             <div class="modal-header">
-
-                <button type="button" class="btn-close" onclick="$('#modal-notification-signup-failer').modal('hide')"
-                    aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -106,8 +105,7 @@
             <div class="modal-footer d-flex justify-content-center">
 
 
-                <button type="button" class="btn text-white ml-auto"
-                    onclick="$('#modal-notification-signup-failer').modal('hide')"
+                <button type="button" class="btn text-white ml-auto" data-dismiss="modal"
                     style="width: 200px; background-color:#FEB700;">OK</button>
             </div>
         </div>
@@ -118,7 +116,6 @@
 
 <% if (locals.message) if (message==='signupfailer' ) { %>
     <script>
-
         $("#modal-notification-signup-failer").modal('show');
     </script>
     <% } %>
@@ -126,7 +123,6 @@
 
         <% if (locals.message) if (message==='signupsuccess' ) { %>
             <script>
-
                 $("#modal-notification-signup").modal('show');
             </script>
             <% } %>

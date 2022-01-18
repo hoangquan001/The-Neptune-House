@@ -1,23 +1,44 @@
 const Detail_M = require("../models/CTHoaDon");
 const Order_M = require("../models/HoaDon");
+var nodemailer = require('nodemailer');
+var ejs = require('ejs');
 class EmployeeController {
   //[GET]
 
   async employee(req, res) {
+    let page = 1
+    const item_per_page = 4
+    if (req.query.page) {
+      page = req.query.page
+      page = page < 1 ? page + 1 : page
+    }
+
+
     let data = []
-    const all = await Order_M.find({}).populate('MaKH').exec()
-    for (var i = 0; i < all.length; i++) {
-      let allDetail = await Detail_M.find({ MaHD: all[i]._id }).populate('MaSP')
+    const allOrder = await Order_M.find({})
+      .skip((page - 1) * item_per_page)
+      .limit(item_per_page)
+      .populate('MaKH').exec()
+
+    for (var i = 0; i < allOrder.length; i++) {
+
+      let allDetail = await Detail_M.find({ MaHD: allOrder[i]._id }).populate('MaSP')
+
       data.push({
-        DonHang: all[i],
+        DonHang: allOrder[i],
         DeTail: allDetail
       })
     }
 
+
+    let numPage = parseInt((await Order_M.find({})).length) / item_per_page
+    numPage = numPage - parseInt(numPage) === 0 ? numPage : numPage + 1
     res.render('Employee', {
       orders: data,
       layout: 'layouts/employee',
-      title: ''
+      title: 'Quản lý hóa đơn',
+      numPage: numPage,
+      curPage: page
     })
 
   }
@@ -38,6 +59,42 @@ class EmployeeController {
     await Order_M.findByIdAndUpdate(ID, newdata)
     res.redirect("/employee")
   }
+
+  async confirmOrder(req, res) {
+    const Id = req.params.id
+    const donhang = await Order_M.findById(Id)
+    donhang.TinhTrangDonHang = "Đang giao"
+    await donhang.save()
+    //#gửi mail
+    // var transporter = nodemailer.createTransport({
+    //   host: 'smtp.gmail.com',
+    //   port: 587,
+    //   secure: false,
+    //   requireTLS: true,
+    //   auth: {
+    //     user: "theneptunehouse111@gmail.com",
+    //     pass: "theneptune111"
+    //   }
+    // })
+
+    // const data = await ejs.renderFile("views/partials/OderMail.ejs", { TongTien: TongTien, List: List, })
+    // var mainOptions = {
+    //   from: "The Neptune House",
+    //   to: donhang.Email,
+    //   subject: "Đặt hàng thành công",
+    //   text: "text",
+    //   html: data
+
+    // };
+    // transporter.sendMail(mainOptions, (err, info) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    // });
+
+    res.redirect("/employee")
+  }
+
 
   async statistical(req, res) {
 

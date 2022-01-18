@@ -10,4 +10,3 @@ const CT_HoaDonSchema = new Schema({
 });
 
 module.exports = mongoose.model("CT_HOADON", CT_HoaDonSchema);
-//Update model

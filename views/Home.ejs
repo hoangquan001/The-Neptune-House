@@ -62,76 +62,220 @@
 
 
   </div>
-  <div class="col-sm d-flex justify-content-center">
-    <nav aria-label="Page navigation example mt-3">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="javascript:;" aria-label="Previous">
-            <span class="material-icons">
-              keyboard_arrow_left
-            </span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>
-        <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
-        <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:;" aria-label="Next">
-            <span class="material-icons">
-              keyboard_arrow_right
-            </span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
-<div class="m-4">
 
+  <% if(numPage!=0) { %>
+    <div class="col-sm d-flex justify-content-center">
+      <nav aria-label="Page navigation example mt-3">
+        <ul class="pagination">
+          <% const pre=curPage <=1 ? curPage:curPage-1; const next=curPage>= numPage ? curPage: parseInt(curPage) + 1
+            %>
+            <li class="page-item">
+              <a class="page-link" href="/?page=<%=pre%>" aria-label="Previous">
+                <span class="material-icons">
+                  keyboard_arrow_left
+                </span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
 
-  <div class="toast position-fixed " style=" z-index:1000;top:10px;right:10px;" id="toast">
-    <div class="toast-header">
-      <strong class="me-auto"><i class="bi-gift-fill"></i> success!</strong>
-      <small>1 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <% for(var i=1; i <=numPage; i++) { var active="" ; if(i==curPage) active="active" ; %>
+
+              <li class="page-item <%=active%>">
+                <a class="page-link" href="/?page=<%=i%>">
+                  <%=i%>
+                </a>
+              </li>
+
+              <% } %>
+
+                <li class="page-item">
+                  <a class="page-link" href="/?page=<%=next%>" aria-label="Next">
+                    <span class="material-icons">
+                      keyboard_arrow_right
+                    </span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+        </ul>
+      </nav>
     </div>
-    <div class="toast-body text-center">
-      <i class="fas fa-check-circle fa-3x" style="color: #81fc71"></i>
-      <h4>Thêm thành công vào giỏ hàng!!</h4>
+</div>
+<% } %>
 
+  <div class="m-4">
+    <div class="toast position-fixed " style=" z-index:1000;top:10px;right:10px;" id="toast">
+      <div class="toast-header">
+        <strong class="me-auto"><i class="bi-gift-fill"></i> success!</strong>
+        <small>1 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body text-center">
+        <i class="fas fa-check-circle fa-3x" style="color: #81fc71"></i>
+        <h4>Thêm thành công vào giỏ hàng!!</h4>
+
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Messenger Plugin chat Code -->
-<div id="fb-root"></div>
+  <!-- Messenger Plugin chat Code -->
+  <div id="fb-root"></div>
 
-<!-- Your Plugin chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
+  <!-- Your Plugin chat code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
 
-<script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "101705759068818");
-  chatbox.setAttribute("attribution", "biz_inbox");
-</script>
 
-<!-- Your SDK code -->
-<script>
-  window.fbAsyncInit = function () {
-    FB.init({
-      xfbml: true,
-      version: 'v12.0'
-    });
-  };
+  <script>
 
-  (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
+    var test = '<%-JSON.stringify(cart) %>';
+    var cart = JSON.parse(test)
+    var number = parseInt(cart.TongSoLuongSp)
+    var element = document.querySelector("#CartProduct")
+    // window.onload = function () {
+    if (element) {
+      element.textContent = number;
+    }
+    // }
+    function addToCard(id, GiaBan) {
+
+      $("#toast").toast({
+        delay: 2000,
+      });
+      $("#toast").toast('show')
+
+      GiaBan = parseInt(GiaBan)
+      number++;
+      element.textContent = number;
+      cart.TongSoLuongSp = number;
+
+      let flag = true
+      for (let i = 0; i < cart.items.length; i++) {
+        if (cart.items[i].MaSP === id) {
+          cart.items[i].SoLuong = parseInt(cart.items[i].SoLuong) + 1;
+          cart.items[i].TongTien = cart.items[i].SoLuong * GiaBan
+          flag = false;
+          break;
+        }
+      }
+      if (flag) {
+        cart.items.push({
+          SoLuong: 1,
+          MaSP: id,
+          TongTien: GiaBan
+        })
+      }
+      fetch('/addCart', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+      })
+        .then(response => response.json())
+        .then(d => {
+        })
+    }
+
+
+    var elementTongTien = document.getElementById('TongTienThanhToan')
+    var TongTien = parseInt('<%-locals.TongTien%>')
+    changeQuantity = function (id, GiaBan) {
+      var quantity = document.getElementById('quantity' + id);
+      var num = document.getElementById('number' + id);
+      var price = document.getElementById('price' + id);
+      let du = 0;
+      for (let i = 0; i < cart.items.length; i++) {
+        if (cart.items[i].MaSP === id) {
+          du = quantity.value - cart.items[i].SoLuong;
+          cart.items[i].SoLuong = quantity.value
+          cart.items[i].TongTien = quantity.value * GiaBan
+          price.textContent = (parseInt(GiaBan) * quantity.value) + 'đ'
+
+          break;
+        }
+      }
+      TongTien += du * GiaBan
+      number += du
+      element.textContent = number
+      num.textContent = 'x' + quantity.value
+      cart.TongSoLuongSp = number;
+      elementTongTien.textContent = TongTien + 'đ'
+      fetch('/addCart', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+      })
+        .then(response => response.json())
+        .then(d => {
+        })
+    }
+
+
+    removeCart = function (id, GiaBan) {
+
+
+      var ele = document.getElementById(id);
+      var quantity = document.getElementById('quantity' + id);
+      var bill = document.getElementById('bill' + id);
+      var element = document.querySelector("#CartProduct")
+      var valdelete = 0;
+      for (let i = 0; i < cart.items.length; i++) {
+        if (cart.items[i].MaSP === id) {
+          TongTien -= cart.items[i].SoLuong * GiaBan
+          cart.items.splice(i, 1)
+          break;
+        }
+
+      }
+      elementTongTien.textContent = TongTien
+      number -= quantity.value
+      element.textContent = number
+      cart.TongSoLuongSp = number;
+      ele.remove();
+      bill.remove()
+      fetch('/addCart', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+      })
+        .then(response => response.json())
+        .then(d => {
+        })
+      if (number === 0) {
+        document.getElementById("BtnDatHang").classList.add("disabled");
+      } else {
+        document.getElementById("BtnDatHang").classList.remove("disabled");
+      }
+    }
+
+
+  </script>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "101705759068818");
+    chatbox.setAttribute("attribution", "biz_inbox");
+
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        xfbml: true,
+        version: 'v12.0'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>

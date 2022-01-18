@@ -320,20 +320,7 @@
                                         <label for="floatingTextarea2">Note</label>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <div class="col d-flex justify-content-start">
-                                        <h6>
-                                            Total:
-                                        </h6>
 
-                                    </div>
-                                    <div class="col d-flex justify-content-end">
-                                        <h5>
-                                            500000 vnđ
-                                        </h5>
-
-                                    </div>
-                                </div>
                                 <div class="text-center d-flex justify-content-end mb-3">
                                     <button type="submit" class="btn btn-rounded mt-4 mb-0 text-white"
                                         style="background-color: #FEB700; width:200px ;">Thanh Toán</button>
@@ -411,8 +398,7 @@
         <div class="modal-content">
             <div class="modal-header">
 
-                <button type="button" class="btn-close" onclick="$('#modal-notification-success').modal('hide')"
-                    aria-label="Close">
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
@@ -427,14 +413,157 @@
             <div class="modal-footer d-flex justify-content-center">
 
 
-                <button type="button" class="btn text-white ml-auto"
-                    onclick="$('#modal-notification-success').modal('hide')"
+                <button type="button" class="btn text-white ml-auto" data-dismiss="modal"
                     style="width: 200px; background-color:#FEB700;">OK</button>
             </div>
         </div>
     </div>
 </div>
+<script>
 
+    var test = '<%-JSON.stringify(cart) %>';
+    var cart = JSON.parse(test)
+    var number = parseInt(cart.TongSoLuongSp)
+    var element = document.querySelector("#CartProduct")
+    // window.onload = function () {
+    if (element) {
+        element.textContent = number;
+
+    }
+    // }
+    function addToCard(id, GiaBan) {
+
+        $("#toast").toast({
+            delay: 2000,
+        });
+        $("#toast").toast('show')
+
+        GiaBan = parseInt(GiaBan)
+        number++;
+        element.textContent = number;
+        cart.TongSoLuongSp = number;
+
+        let flag = true
+        for (let i = 0; i < cart.items.length; i++) {
+            if (cart.items[i].MaSP === id) {
+                cart.items[i].SoLuong = parseInt(cart.items[i].SoLuong) + 1;
+                cart.items[i].TongTien = cart.items[i].SoLuong * GiaBan
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            cart.items.push({
+                SoLuong: 1,
+                MaSP: id,
+                TongTien: GiaBan
+            })
+        }
+        fetch('/addCart', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cart),
+        })
+            .then(response => response.json())
+            .then(d => {
+            })
+    }
+
+
+    var elementTongTien = document.getElementById('TongTienThanhToan')
+    var TongTien = parseInt('<%-locals.TongTien%>')
+    changeQuantity = function (id, GiaBan) {
+        var quantity = document.getElementById('quantity' + id);
+        var num = document.getElementById('number' + id);
+        var price = document.getElementById('price' + id);
+        let du = 0;
+        for (let i = 0; i < cart.items.length; i++) {
+            if (cart.items[i].MaSP === id) {
+                du = quantity.value - cart.items[i].SoLuong;
+                cart.items[i].SoLuong = quantity.value
+                cart.items[i].TongTien = quantity.value * GiaBan
+                price.textContent = (parseInt(GiaBan) * quantity.value) + 'đ'
+
+                break;
+            }
+        }
+        TongTien += du * GiaBan
+        number += du
+        element.textContent = number
+        num.textContent = 'x' + quantity.value
+        cart.TongSoLuongSp = number;
+        elementTongTien.textContent = TongTien + 'đ'
+        fetch('/addCart', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cart),
+        })
+            .then(response => response.json())
+            .then(d => {
+            })
+    }
+
+    if (number === 0) {
+        document.getElementById("BtnDatHang").classList.add("disabled");
+    } else {
+        document.getElementById("BtnDatHang").classList.remove("disabled");
+    }
+
+    removeCart = function (id, GiaBan) {
+
+
+        var ele = document.getElementById(id);
+        var quantity = document.getElementById('quantity' + id);
+        var bill = document.getElementById('bill' + id);
+        var element = document.querySelector("#CartProduct")
+        var valdelete = 0;
+        for (let i = 0; i < cart.items.length; i++) {
+            if (cart.items[i].MaSP === id) {
+                TongTien -= cart.items[i].SoLuong * GiaBan
+                cart.items.splice(i, 1)
+                break;
+            }
+
+        }
+        elementTongTien.textContent = TongTien
+        number -= quantity.value
+        element.textContent = number
+        cart.TongSoLuongSp = number;
+        ele.remove();
+        bill.remove()
+        fetch('/addCart', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cart),
+        })
+            .then(response => response.json())
+            .then(d => {
+            })
+        if (number === 0) {
+            document.getElementById("BtnDatHang").classList.add("disabled");
+        } else {
+            document.getElementById("BtnDatHang").classList.remove("disabled");
+        }
+    }
+
+    window.addEventListener("pageshow", function (event) {
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Handle page restore.
+            window.location.reload();
+        }
+    });
+
+
+</script>
 
 <% if (locals.message) if (message==='paymentsuccess' ) { %>
     <script>
